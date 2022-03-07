@@ -1,17 +1,15 @@
 import React from 'react';
 import './App.css';
-import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter } from 'react-router-dom';
-import { Route } from 'react-router-dom';
-import { Switch } from 'react-router-dom';
+// import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import rockGlass from './images/rockGlass.svg';
 
 function App() {
   return (
     <div className="meals">
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Switch>
-          <Route path="/foods" component={ } />
+          <Route path="/foods" component={Foods} />
           <Route path="/drinks" component={ } />
           <Route path="/foods/:id-da-receita" component={ } />
           <Route path="/drinks/:id-da-receita" component={ } />
@@ -28,12 +26,12 @@ function App() {
           <Route path="/favorite-recipes" component={ } />
           <Route exact path="/" component={ } />
         </Switch>
-      </BrowserRouter>
+      </BrowserRouter> */}
       <span className="logo">TRYBE</span>
       <object
         className="rocksGlass"
         type="image/svg+xml"
-        data={rockGlass}
+        data={ rockGlass }
       >
         Glass
       </object>
