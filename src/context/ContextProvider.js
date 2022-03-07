@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import Context from './Context';
 
 const ContextProvider = ({ children }) => {
-  const context = {
-    
-  };
+  const context = {};
   return (
     <Context.Provider value={ context }>
       { children }
