@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 function Profile() {
   const history = useHistory();
   const [email, setEmail] = useState('');
+
   useEffect(() => {
     setEmail(JSON.parse(localStorage.getItem('user')));
   }, []);
