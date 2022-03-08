@@ -1,9 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Context from './Context';
+import ContextRecipesScreen from './ContextRecipesScreen';
 
 const ContextProvider = ({ children }) => {
-  const context = {};
+  const {
+    stateFoodsRecipes,
+    setFoodsRecipes,
+    stateDrinksRecipes,
+    setDrinksRecipes,
+  } = ContextRecipesScreen();
+  const context = {
+    stateFoodsRecipes,
+    setFoodsRecipes,
+    stateDrinksRecipes,
+    setDrinksRecipes,
+  };
   return (
     <Context.Provider value={ context }>
       { children }

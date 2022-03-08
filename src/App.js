@@ -4,16 +4,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import ContextProvider from './context/ContextProvider';
 import Login from './pages/Login';
+import RecipesScreen from './pages/RecipesScreen';
 
 function App() {
   return (
-    <div className="meals">
+    <main>
       <ContextProvider>
         <BrowserRouter>
           <Switch>
-            {/* <Route path="/foods" component={Foods} />
-            <Route path="/drinks" component={ } />
-            <Route path="/foods/:id-da-receita" component={ } />
+            <Route path="/foods" component={ RecipesScreen } />
+            <Route path="/drinks" component={ RecipesScreen } />
+            {/* <Route path="/foods/:id-da-receita" component={ } />
             <Route path="/drinks/:id-da-receita" component={ } />
             <Route path="/foods/:id-da-receita/in-progress" component={ } />
             <Route path="/drinks/:id-da-receita/in-progress" component={ } />
@@ -30,7 +31,7 @@ function App() {
           </Switch>
         </BrowserRouter>
       </ContextProvider>
-    </div>
+    </main>
   );
 }
 
