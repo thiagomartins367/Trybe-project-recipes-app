@@ -39,6 +39,10 @@ function Login() {
         onClick={ () => {
           localStorage.setItem('mealsToken', 1);
           localStorage.setItem('cocktailsToken', 1);
+          const user = {
+            email,
+          };
+          localStorage.setItem('user', JSON.stringify(user));
         } }
       >
         Enter
