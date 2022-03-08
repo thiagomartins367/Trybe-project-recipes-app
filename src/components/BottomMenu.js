@@ -4,8 +4,7 @@ import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 
-const BottomMenu = () => {
-  return (
+const BottomMenu = () => (
     <footer data-testid="footer">
       <Link to="/drinks">
         <img src={ drinkIcon } alt="Drinks" data-testid="drinks-bottom-btn" />
@@ -17,7 +16,6 @@ const BottomMenu = () => {
         <img src={ mealIcon } alt="Food" data-testid="food-bottom-btn" />
       </Link>
     </footer>
-  );
-};
+);
 
 export default BottomMenu;
