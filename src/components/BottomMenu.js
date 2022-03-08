@@ -7,13 +7,13 @@ import mealIcon from '../images/mealIcon.svg';
 const BottomMenu = () => {
   return (
     <footer data-testid="footer">
-      <Link to="">
+      <Link to="/drinks">
         <img src={ drinkIcon } alt="Drinks" data-testid="drinks-bottom-btn" />
       </Link>
-      <Link to="">
+      <Link to="/explore">
         <img src={ exploreIcon } alt="Explorar" data-testid="explore-bottom-btn" />
       </Link>
-      <Link to="">
+      <Link to="/foods">
         <img src={ mealIcon } alt="Food" data-testid="food-bottom-btn" />
       </Link>
     </footer>
