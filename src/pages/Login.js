@@ -36,6 +36,10 @@ function Login() {
         type="button"
         data-testid="login-submit-btn"
         disabled={ disabled }
+        onClick={ () => {
+          localStorage.setItem('mealsToken', 1);
+          localStorage.setItem('cocktailsToken', 1);
+        } }
       >
         Enter
 
