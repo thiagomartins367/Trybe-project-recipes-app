@@ -7,14 +7,22 @@ const ContextProvider = ({ children }) => {
   const {
     stateFoodsRecipes,
     setFoodsRecipes,
+    stateFoodRecipesCategories,
+    setFoodRecipesCategories,
     stateDrinksRecipes,
     setDrinksRecipes,
+    stateDrinkRecipesCategories,
+    setDrinkRecipesCategories,
   } = ContextRecipesScreen();
   const context = {
     stateFoodsRecipes,
     setFoodsRecipes,
+    stateFoodRecipesCategories,
+    setFoodRecipesCategories,
     stateDrinksRecipes,
     setDrinksRecipes,
+    stateDrinkRecipesCategories,
+    setDrinkRecipesCategories,
   };
   return (
     <Context.Provider value={ context }>

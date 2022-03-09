@@ -1,3 +1,9 @@
+.section-filters-recipes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .recipe-cards {
   display: flex;
   justify-content: space-evenly;
