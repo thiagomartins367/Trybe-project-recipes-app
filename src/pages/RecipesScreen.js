@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import RecipeCard from '../components/recipesScreen/RecipeCard';
 import Context from '../context/Context';
+import { FIRST_12_RECIPES } from '../constants';
 
 const RecipesScreen = ({ match: { path } }) => {
   const {
@@ -9,38 +10,48 @@ const RecipesScreen = ({ match: { path } }) => {
     stateFoodRecipesCategories,
     stateDrinksRecipes,
     stateDrinkRecipesCategories,
+    editableStateRecipes,
+    setEditableStateRecipes,
+    stateActiveFilter,
+    filterRecipesByCategory,
   } = useContext(Context);
-  const FIRST_12_RECIPES = 12;
   const FIRST_5_CATEGORIES_RECIPES = 5;
   let recipesData = [];
-  const editableRecipeData = [];
   let typeOfRecipes = '';
   let recipesCategories = [];
   switch (path) {
   case '/foods':
-    if (stateFoodsRecipes.length > 0) {
-      recipesData = [...stateFoodsRecipes];
-      typeOfRecipes = 'Meal';
-      recipesCategories = [...stateFoodRecipesCategories];
-    }
+    recipesData = [...stateFoodsRecipes];
+    typeOfRecipes = 'Meal';
+    recipesCategories = [...stateFoodRecipesCategories];
     break;
 
   case '/drinks':
-    if (stateDrinksRecipes.length > 0) {
-      recipesData = [...stateDrinksRecipes];
-      typeOfRecipes = 'Drink';
-      recipesCategories = [...stateDrinkRecipesCategories];
-    }
+    recipesData = [...stateDrinksRecipes];
+    typeOfRecipes = 'Drink';
+    recipesCategories = [...stateDrinkRecipesCategories];
     break;
 
   default:
     break;
   }
-  if (recipesData.length >= FIRST_12_RECIPES) {
+  console.log('stateActiveFilter: ', stateActiveFilter);
+  if (recipesData.length >= FIRST_12_RECIPES && stateActiveFilter === '') {
+    const editableRecipeData = [];
     for (let index = 0; index < FIRST_12_RECIPES; index += 1) {
       editableRecipeData.push(recipesData[index]);
     }
+    // console.log('editableRecipeData: ', editableRecipeData);
+    // console.log('editableStateRecipes: ', editableStateRecipes);
+    if (
+      editableStateRecipes[editableStateRecipes.length - 1]
+      !== editableRecipeData[editableRecipeData.length - 1]
+    ) {
+      setEditableStateRecipes(editableRecipeData);
+      console.log('EXECUTOU setEditableStateRecipes');
+    }
   }
+
   if (recipesCategories.length >= FIRST_5_CATEGORIES_RECIPES) {
     const arrayCategories = [];
     for (let index = 0; index < FIRST_5_CATEGORIES_RECIPES; index += 1) {
@@ -49,9 +60,12 @@ const RecipesScreen = ({ match: { path } }) => {
     recipesCategories = [...arrayCategories];
   }
   // console.log('stateDrinkRecipes: ', stateDrinksRecipes);
-  console.log('recipesData: ', recipesData);
-  console.log('path - RecipesScreen: ', path);
-  console.log('recipesCategories: ', recipesCategories);
+  // console.log('recipesData: ', recipesData);
+  // console.log('stateFoodsRecipes: ', stateFoodsRecipes);
+  // console.log('stateDrinksRecipes: ', stateDrinksRecipes);
+  // console.log('path - RecipesScreen: ', path);
+  // console.log('recipesCategories: ', recipesCategories);
+
   return (
     <section>
       <section className="section-filters-recipes">
@@ -59,6 +73,10 @@ const RecipesScreen = ({ match: { path } }) => {
           <button
             key={ category }
             type="button"
+            name={ `button-filter-type-recipes-${typeOfRecipes}` }
+            id={ `button-filter-category-${category}` }
+            className="button-filter"
+            onClick={ filterRecipesByCategory }
             data-testid={ `${category}-category-filter` }
           >
             { category }
@@ -66,7 +84,7 @@ const RecipesScreen = ({ match: { path } }) => {
         ))}
       </section>
       <section className="meals">
-        {editableRecipeData.map((element, index) => (
+        {editableStateRecipes.map((element, index) => (
           <RecipeCard
             key={ `${index}-${element[`str${typeOfRecipes}`]}` }
             dataTestIdRecipeCard={ `${index}-recipe-card` }

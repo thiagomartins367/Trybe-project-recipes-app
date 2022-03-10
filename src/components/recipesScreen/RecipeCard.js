@@ -13,8 +13,8 @@ const RecipeCard = ({
       <img
         src={ recipeImage }
         alt={ recipeName }
-        className="recipe-logo"
         data-testid={ dataTestIdRecipeImg }
+        className="recipe-logo"
       />
     </div>
     <div className="logo">
