@@ -6,6 +6,8 @@ import ContextProvider from './context/ContextProvider';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Explore from './pages/Explore';
+import ExploreFoods from './pages/ExploreFoods';
+import ExploreDrinks from './pages/ExploreDrinks';
 
 function App() {
   return (
@@ -19,9 +21,9 @@ function App() {
           <Route path="/foods/:id-da-receita/in-progress" component={ } />
           <Route path="/drinks/:id-da-receita/in-progress" component={ } /> */}
           <Route exact path="/explore" component={ Explore } />
-          {/* <Route path="/explore/foods" component={ } />
-          <Route path="/explore/drinks" component={ } />
-          <Route path="/explore/foods/ingredients" component={ } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route path="/explore/drinks" component={ ExploreDrinks } />
+          {/* <Route path="/explore/foods/ingredients" component={ } />
           <Route path="/explore/drinks/ingredients" component={ } />
           <Route path="/explore/foods/nationalities" component={ } /> */}
           <Route path="/profile" component={ Profile } />
