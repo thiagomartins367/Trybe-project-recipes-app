@@ -11,6 +11,7 @@ function Profile() {
 
   return (
     <div>
+      <h1>Profile</h1>
       <h3 data-testid="profile-email">{email.email}</h3>
       <button
         type="button"
