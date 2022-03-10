@@ -30,15 +30,18 @@ const ContextRecipesScreen = () => {
     const category = id.replace('button-filter-category-', '');
     const typeOfRecipes = name.replace('button-filter-type-recipes-', '') === 'Meal'
       ? 'meal' : 'cocktail';
-    const filteredRecipes = await fetchRecipesFromContext(typeOfRecipes, category);
-    setActiveFilter(category);
-    setEditableStateRecipes(filteredRecipes);
     const buttons = document.querySelectorAll('.button-filter');
     buttons.forEach((htmlElement) => {
       htmlElement.style.backgroundColor = 'rgb(212, 212, 212)';
     });
-    target.style.backgroundColor = 'green';
-    return { filteredRecipes, category };
+    if (category !== stateActiveFilter) {
+      const filteredRecipes = await fetchRecipesFromContext(typeOfRecipes, category);
+      setActiveFilter(category);
+      setEditableStateRecipes(filteredRecipes);
+      target.style.backgroundColor = 'green';
+    } else {
+      setActiveFilter('');
+    }
   };
 
   const contextRecipesObj = {
