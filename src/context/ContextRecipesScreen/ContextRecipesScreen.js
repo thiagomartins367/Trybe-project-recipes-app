@@ -8,6 +8,7 @@ import {
 import fetchRecipesAPI from '../../services/fetchRecipesAPI';
 import fetchRecipesCategoriesAPI from '../../services/fetchRecipesCategoriesAPI';
 import fetchRecipesFromContext from './fetchRecipesFromContext';
+import handleFilters from './handleFilters';
 
 const ContextRecipesScreen = () => {
   const [stateDrinksRecipes, setDrinksRecipes] = useState([]);
@@ -24,26 +25,21 @@ const ContextRecipesScreen = () => {
     fetchRecipesCategoriesAPI(DRINK_RECIPES_CATEGORIES_URL)
       .then((data) => setDrinkRecipesCategories(data.drinks));
   }, []);
-
   const filterRecipesByCategory = async ({ target }) => {
-    const { name, id = 'default' } = target;
-    const category = id.replace('button-filter-category-', '');
-    const typeOfRecipes = name.replace('button-filter-type-recipes-', '') === 'Meal'
-      ? 'meal' : 'cocktail';
-    const buttons = document.querySelectorAll('.button-filter');
-    buttons.forEach((htmlElement) => {
-      htmlElement.style.backgroundColor = 'rgb(212, 212, 212)';
-    });
-    if (category !== stateActiveFilter) {
+    const {
+      category,
+      typeOfRecipes,
+    } = handleFilters(target, stateFoodRecipesCategories, stateDrinkRecipesCategories);
+    if (category !== stateActiveFilter && category !== 'All') {
+      target.style.backgroundColor = 'rgb(0, 180, 216)';
       const filteredRecipes = await fetchRecipesFromContext(typeOfRecipes, category);
       setActiveFilter(category);
       setEditableStateRecipes(filteredRecipes);
-      target.style.backgroundColor = 'green';
     } else {
+      target.style.backgroundColor = 'rgb(0, 180, 216)';
       setActiveFilter('');
     }
   };
-
   const contextRecipesObj = {
     stateFoodsRecipes,
     stateFoodRecipesCategories,

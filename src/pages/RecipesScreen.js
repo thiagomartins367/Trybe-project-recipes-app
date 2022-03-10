@@ -35,7 +35,7 @@ const RecipesScreen = ({ match: { path } }) => {
   default:
     break;
   }
-  console.log('stateActiveFilter: ', stateActiveFilter);
+  // console.log('stateActiveFilter: ', stateActiveFilter);
   if (recipesData.length >= FIRST_12_RECIPES && stateActiveFilter === '') {
     const editableRecipeData = [];
     for (let index = 0; index < FIRST_12_RECIPES; index += 1) {
@@ -48,7 +48,7 @@ const RecipesScreen = ({ match: { path } }) => {
       !== editableRecipeData[editableRecipeData.length - 1]
     ) {
       setEditableStateRecipes(editableRecipeData);
-      console.log('EXECUTOU setEditableStateRecipes');
+      // console.log('EXECUTOU setEditableStateRecipes');
     }
   }
 
@@ -59,6 +59,7 @@ const RecipesScreen = ({ match: { path } }) => {
     }
     recipesCategories = [...arrayCategories];
   }
+  recipesCategories.unshift('All');
   // console.log('stateDrinkRecipes: ', stateDrinksRecipes);
   // console.log('recipesData: ', recipesData);
   // console.log('stateFoodsRecipes: ', stateFoodsRecipes);
