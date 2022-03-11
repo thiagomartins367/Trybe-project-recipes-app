@@ -50,8 +50,10 @@
   display: flex;
   flex-flow: row wrap;
   font-family: sans-serif;
+
   /* height: 100vh; */
   justify-content: space-evenly;
+
   /* width: 100%; */
 }
 
