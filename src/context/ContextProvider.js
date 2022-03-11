@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Context from './Context';
+import ContextRecipesScreen from './ContextRecipesScreen/ContextRecipesScreen';
 
 const ContextProvider = ({ children }) => {
-  const context = {};
+  const { contextRecipesObj } = ContextRecipesScreen();
+  const context = {
+    ...contextRecipesObj,
+  };
   return (
     <Context.Provider value={ context }>
       { children }
