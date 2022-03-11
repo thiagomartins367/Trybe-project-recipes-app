@@ -30,7 +30,7 @@ function App() {
           <Route path="/explore/drinks/ingredients" component={ } />
           <Route path="/explore/foods/nationalities" component={ } />
           <Route path="/done-recipes" component={ } />
-          <Route path="/favorite-recipes" component={ } /> */}
+          <Route path="/favorite-recipes" component={ }/> */}
         </Switch>
       </ContextProvider>
     </main>
