@@ -1,8 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { fetchRandonDrink } from '../services/fecthAPI';
 
 function ExploreDrinks() {
   const history = useHistory();
+
+  const getRecipe = async () => {
+    const response = await fetchRandonDrink();
+    history.push(`/drinks/${response[0].idDrink}`);
+  };
+
   return (
     <div>
       <h1>Explore Drinks</h1>
@@ -14,9 +21,14 @@ function ExploreDrinks() {
         } }
       >
         By Ingredient
-
       </button>
-      <button type="button" data-testid="explore-surprise">Surprise me!</button>
+      <button
+        type="button"
+        data-testid="explore-surprise"
+        onClick={ () => getRecipe() }
+      >
+        Surprise me!
+      </button>
     </div>
   );
 }

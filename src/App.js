@@ -22,7 +22,7 @@ function App() {
           <Route path="/drinks/:id-da-receita/in-progress" component={ } /> */}
           <Route exact path="/explore" component={ Explore } />
           <Route exact path="/explore/foods" component={ ExploreFoods } />
-          <Route path="/explore/drinks" component={ ExploreDrinks } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
           {/* <Route path="/explore/foods/ingredients" component={ } />
           <Route path="/explore/drinks/ingredients" component={ } />
           <Route path="/explore/foods/nationalities" component={ } /> */}
