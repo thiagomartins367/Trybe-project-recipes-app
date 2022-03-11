@@ -12,11 +12,11 @@ function App() {
       <ContextProvider>
         <BrowserRouter>
           <Switch>
+            {/* <Route path="/foods/:id-da-receita" component={ } />
+            <Route path="/drinks/:id-da-receita" component={ } /> */}
             <Route path="/foods" component={ RecipesScreen } />
             <Route path="/drinks" component={ RecipesScreen } />
-            {/* <Route path="/foods/:id-da-receita" component={ } />
-            <Route path="/drinks/:id-da-receita" component={ } />
-            <Route path="/foods/:id-da-receita/in-progress" component={ } />
+            {/* <Route path="/foods/:id-da-receita/in-progress" component={ } />
             <Route path="/drinks/:id-da-receita/in-progress" component={ } />
             <Route path="/explore" component={ } />
             <Route path="/explore/foods" component={ } />

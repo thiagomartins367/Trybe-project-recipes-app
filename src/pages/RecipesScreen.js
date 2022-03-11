@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RecipeCard from '../components/recipesScreen/RecipeCard';
 import Context from '../context/Context';
@@ -61,7 +62,7 @@ const RecipesScreen = ({ match: { path } }) => {
   }
   recipesCategories.unshift('All');
   // console.log('stateDrinkRecipes: ', stateDrinksRecipes);
-  // console.log('recipesData: ', recipesData);
+  console.log('recipesData: ', recipesData);
   // console.log('stateFoodsRecipes: ', stateFoodsRecipes);
   // console.log('stateDrinksRecipes: ', stateDrinksRecipes);
   // console.log('path - RecipesScreen: ', path);
@@ -86,14 +87,18 @@ const RecipesScreen = ({ match: { path } }) => {
       </section>
       <section className="meals">
         {editableStateRecipes.map((element, index) => (
-          <RecipeCard
+          <Link
+            to={ `${path}/${element[`id${typeOfRecipes}`]}` }
             key={ `${index}-${element[`str${typeOfRecipes}`]}` }
-            dataTestIdRecipeCard={ `${index}-recipe-card` }
-            dataTestIdRecipeImg={ `${index}-card-img` }
-            dataTestIdRecipeName={ `${index}-card-name` }
-            recipeImage={ element[`str${typeOfRecipes}Thumb`] }
-            recipeName={ element[`str${typeOfRecipes}`] }
-          />
+          >
+            <RecipeCard
+              dataTestIdRecipeCard={ `${index}-recipe-card` }
+              dataTestIdRecipeImg={ `${index}-card-img` }
+              dataTestIdRecipeName={ `${index}-card-name` }
+              recipeImage={ element[`str${typeOfRecipes}Thumb`] }
+              recipeName={ element[`str${typeOfRecipes}`] }
+            />
+          </Link>
         ))}
       </section>
     </section>
