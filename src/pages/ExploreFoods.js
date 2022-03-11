@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { fetchRandonFood } from '../services/fecthAPI';
+import { fetchRandonFood } from '../services/fetchRandomRecipes.js';
 
 function ExploreFoods() {
   const history = useHistory();

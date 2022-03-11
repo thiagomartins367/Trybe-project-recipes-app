@@ -22,7 +22,7 @@ describe('Teste da página Profile.js', () => {
 
     history.push('/profile');
 
-    expect(screen.getByRole('heading', { EMAIL_TEST })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, EMAIL_TEST })).toBeInTheDocument();
   });
 
   it('há um botão que redireciona para a página "Favorite Recipes"', () => {
