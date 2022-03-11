@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import RecipesScreen from './pages/RecipesScreen';
 import Profile from './pages/Profile';
 import Explore from './pages/Explore';
+import ExploreFoods from './pages/ExploreFoods';
+import ExploreDrinks from './pages/ExploreDrinks';
 
 function App() {
   return (
