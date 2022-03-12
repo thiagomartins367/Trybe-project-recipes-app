@@ -1,11 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import Header from '../components/Header';
 
 function Explore() {
   const history = useHistory();
   return (
     <div>
-      <h1>Explore</h1>
+      <Header />
       <button
         type="button"
         data-testid="explore-foods"

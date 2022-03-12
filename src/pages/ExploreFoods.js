@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import Header from '../components/Header';
 import { fetchRandonFood } from '../services/fecthAPI';
 
 function ExploreFoods() {
@@ -12,7 +13,7 @@ function ExploreFoods() {
 
   return (
     <div>
-      <h1>Explore Foods</h1>
+      <Header />
       <button
         type="button"
         data-testid="explore-by-ingredient"

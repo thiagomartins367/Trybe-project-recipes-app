@@ -9,7 +9,7 @@ const RecipeCard = ({
   dataTestIdRecipeName,
 }) => (
   <div className="recipe-card" data-testid={ dataTestIdRecipeCard }>
-    <div>
+    <div className="recipe-card-div-img">
       <img
         src={ recipeImage }
         alt={ recipeName }
@@ -25,13 +25,14 @@ const RecipeCard = ({
 
 RecipeCard.propTypes = {
   recipeImage: PropTypes.string,
-  recipeName: PropTypes.string.isRequired,
+  recipeName: PropTypes.string,
   dataTestIdRecipeCard: PropTypes.string,
   dataTestIdRecipeImg: PropTypes.string,
   dataTestIdRecipeName: PropTypes.string,
 };
 
 RecipeCard.defaultProps = {
+  recipeName: '',
   recipeImage: '',
   dataTestIdRecipeCard: '',
   dataTestIdRecipeImg: '',

@@ -15,22 +15,22 @@ function App() {
     <main>
       <ContextProvider>
         <Switch>
-          <Route path="/foods" component={ RecipesScreen } />
-          <Route path="/drinks" component={ RecipesScreen } />
+          <Route exact path="/foods" component={ RecipesScreen } />
+          <Route exact path="/drinks" component={ RecipesScreen } />
           <Route exact path="/explore" component={ Explore } />
-          <Route path="/profile" component={ Profile } />
-          <Route path="/explore/foods" component={ ExploreFoods } />
-          <Route path="/explore/drinks" component={ ExploreDrinks } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
           <Route exact path="/" component={ Login } />
-          {/* <Route path="/foods/:id-da-receita" component={ } />
-          <Route path="/drinks/:id-da-receita" component={ } />
-          <Route path="/foods/:id-da-receita/in-progress" component={ } />
-          <Route path="/drinks/:id-da-receita/in-progress" component={ } />
-          <Route path="/explore/foods/ingredients" component={ } />
-          <Route path="/explore/drinks/ingredients" component={ } />
-          <Route path="/explore/foods/nationalities" component={ } />
-          <Route path="/done-recipes" component={ } />
-          <Route path="/favorite-recipes" component={ }/> */}
+          {/* <Route exact path="/foods/:id-da-receita" component={ } />
+          <Route exact path="/drinks/:id-da-receita" component={ } />
+          <Route exact path="/foods/:id-da-receita/in-progress" component={ } />
+          <Route exact path="/drinks/:id-da-receita/in-progress" component={ } />
+          <Route exact path="/explore/foods/ingredients" component={ } />
+          <Route exact path="/explore/drinks/ingredients" component={ } />
+          <Route exact path="/explore/foods/nationalities" component={ } />
+          <Route exact path="/done-recipes" component={ } />
+          <Route exact path="/favorite-recipes" component={ }/> */}
         </Switch>
       </ContextProvider>
     </main>
