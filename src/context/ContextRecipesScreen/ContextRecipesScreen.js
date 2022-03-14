@@ -16,7 +16,7 @@ const ContextRecipesScreen = () => {
   const [stateFoodsRecipes, setFoodsRecipes] = useState([]);
   const [stateFoodRecipesCategories, setFoodRecipesCategories] = useState([]);
   const [editableStateRecipes, setEditableStateRecipes] = useState([]);
-  const [stateActiveFilter, setActiveFilter] = useState('');
+  const [stateActiveFilter, setActiveFilter] = useState('All');
   useEffect(() => {
     fetchRecipesAPI(MEAL_RECIPES_URL).then((data) => setFoodsRecipes(data.meals));
     fetchRecipesAPI(DRINK_RECIPES_URL).then((data) => setDrinksRecipes(data.drinks));
@@ -30,14 +30,15 @@ const ContextRecipesScreen = () => {
       category,
       typeOfRecipes,
     } = handleFilters(target, stateFoodRecipesCategories, stateDrinkRecipesCategories);
-    if (category !== stateActiveFilter && category !== 'All') {
+    setActiveFilter(category);
+    if (category !== stateActiveFilter) {
       target.style.backgroundColor = 'rgb(0, 180, 216)';
-      const filteredRecipes = await fetchRecipesFromContext(typeOfRecipes, category);
-      setActiveFilter(category);
-      setEditableStateRecipes(filteredRecipes);
     } else {
-      target.style.backgroundColor = 'rgb(0, 180, 216)';
-      setActiveFilter('');
+      setActiveFilter('All');
+    }
+    if (category !== 'All') {
+      const filteredRecipes = await fetchRecipesFromContext(typeOfRecipes, category);
+      setEditableStateRecipes(filteredRecipes);
     }
   };
   const contextRecipesObj = {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { fetchRandonFood } from '../services/fetchRandomRecipes.js';
+import BottomMenu from '../components/BottomMenu';
+import Header from '../components/Header';
+import { fetchRandonFood } from '../services/fetchRandomRecipe';
 
 function ExploreFoods() {
   const history = useHistory();
@@ -12,7 +14,7 @@ function ExploreFoods() {
 
   return (
     <div>
-      <h1>Explore Foods</h1>
+      <Header />
       <button
         type="button"
         data-testid="explore-by-ingredient"
@@ -40,6 +42,7 @@ function ExploreFoods() {
       >
         Surprise me!
       </button>
+      <BottomMenu />
     </div>
   );
 }
