@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import Context from './Context';
 import ContextRecipesScreen from './ContextRecipesScreen/ContextRecipesScreen';
 import ContextLogin from './ContextLogin/ContextLogin';
+import ContextProfile from './ContextProfile/ContextProfile';
 
 const ContextProvider = ({ children }) => {
   const { contextRecipesObj } = ContextRecipesScreen();
   const { contextLoginObj } = ContextLogin();
+  const { contextProfileObj } = ContextProfile();
 
   const context = {
-    ...contextRecipesObj, ...contextLoginObj,
+    ...contextRecipesObj, ...contextLoginObj, ...contextProfileObj,
   };
   return (
     <Context.Provider value={ context }>
