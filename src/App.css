@@ -17,8 +17,8 @@ html body {
 
 .header-div-button-profile button, .header-div-button-search button {
   background-color: rgb(194, 189, 189);
-  box-shadow: none;
   border: none;
+  box-shadow: none;
 }
 
 .header-div-button-profile button img, .header-div-button-search button img {
@@ -41,7 +41,7 @@ html body {
 .header-div-search-bar input {
   border: 2px solid black;
   outline: none;
-  width:  100%;
+  width: 100%;
 }
 
 .section-filters-recipes {
@@ -91,10 +91,10 @@ html body {
 
 footer {
   background-color: rgb(185, 185, 185);
-  bottom:0;
-  left:0;
-  position: fixed;
+  bottom: 0;
+  left: 0;
   padding: 5px;
+  position: fixed;
   width: 100%;
 }
 
