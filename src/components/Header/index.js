@@ -60,6 +60,7 @@ export default function Header() {
             type="text"
             value={ search }
             placeholder="Search Recipe"
+            data-testid="search-input"
             onChange={ onChangSearch }
           />
         )}

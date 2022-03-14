@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import BottomMenu from '../components/BottomMenu';
 import Header from '../components/Header';
 import { fetchRandonDrink } from '../services/fecthAPI';
 
@@ -30,6 +31,7 @@ function ExploreDrinks() {
       >
         Surprise me!
       </button>
+      <BottomMenu />
     </div>
   );
 }

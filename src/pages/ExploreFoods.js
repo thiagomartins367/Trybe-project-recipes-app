@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import BottomMenu from '../components/BottomMenu';
 import Header from '../components/Header';
 import { fetchRandonFood } from '../services/fecthAPI';
 
@@ -41,6 +42,7 @@ function ExploreFoods() {
       >
         Surprise me!
       </button>
+      <BottomMenu />
     </div>
   );
 }

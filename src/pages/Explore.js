@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import BottomMenu from '../components/BottomMenu';
 import Header from '../components/Header';
 
 function Explore() {
@@ -25,6 +26,7 @@ function Explore() {
       >
         Explore Drinks
       </button>
+      <BottomMenu />
     </div>
   );
 }
