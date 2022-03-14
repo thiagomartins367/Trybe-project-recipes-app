@@ -3,12 +3,12 @@ html body {
 }
 
 .section-header {
+  align-items: center;
+  background-color: rgb(194, 189, 189);
+  color: black;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 5px;
-  color: black;
-  background-color: rgb(194, 189, 189);
 }
 
 .header-div-button-profile, .header-h1-page-title, .header-div-button-search {
@@ -30,8 +30,8 @@ html body {
 }
 
 .header-h1-page-title {
-  margin: 0.001px;
   font-size: 24pt;
+  margin: 0.001px;
 }
 
 .header-div-search-bar {
@@ -39,9 +39,9 @@ html body {
 }
 
 .header-div-search-bar input {
-  width:  100%;
   border: 2px solid black;
   outline: none;
+  width:  100%;
 }
 
 .section-filters-recipes {
@@ -90,18 +90,18 @@ html body {
 }
 
 footer {
-  position: fixed;
+  background-color: rgb(185, 185, 185);
   bottom:0;
   left:0;
-  background-color: rgb(185, 185, 185);
-  width: 100%;
+  position: fixed;
   padding: 5px;
+  width: 100%;
 }
 
 footer section {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin: 0.001px 10px;
 }
 
@@ -116,6 +116,7 @@ footer section {
   display: flex;
   flex-flow: row wrap;
   font-family: sans-serif;
+
   /* height: 100vh; */
   justify-content: space-evenly;
 
