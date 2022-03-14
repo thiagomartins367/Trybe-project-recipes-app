@@ -1,10 +1,8 @@
-const URL_FOOD = 'https://www.themealdb.com/api/json/v1/1/random.php';
-
-const URL_DRINK = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+import { URL_DRINK_RANDOM, URL_FOOD_RANDOM } from '../constants';
 
 export const fetchRandonFood = async () => {
   try {
-    const response = await fetch(URL_FOOD);
+    const response = await fetch(URL_FOOD_RANDOM);
     const data = await response.json();
     return data.meals;
   } catch (error) {
@@ -14,7 +12,7 @@ export const fetchRandonFood = async () => {
 
 export const fetchRandonDrink = async () => {
   try {
-    const response = await fetch(URL_DRINK);
+    const response = await fetch(URL_DRINK_RANDOM);
     const data = await response.json();
     return data.drinks;
   } catch (error) {
