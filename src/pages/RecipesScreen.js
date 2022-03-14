@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RecipeCard from '../components/recipesScreen/RecipeCard';
 import Context from '../context/Context';
 import { FIRST_12_RECIPES } from '../constants';
+import Header from '../components/Header';
+import BottomMenu from '../components/BottomMenu';
 
 const RecipesScreen = ({ match: { path } }) => {
   const {
@@ -16,11 +18,13 @@ const RecipesScreen = ({ match: { path } }) => {
     stateActiveFilter,
     filterRecipesByCategory,
   } = useContext(Context);
+  const history = useHistory();
+  const { location: { pathname } } = history;
   const FIRST_5_CATEGORIES_RECIPES = 5;
   let recipesData = [];
   let typeOfRecipes = '';
   let recipesCategories = [];
-  switch (path) {
+  switch (pathname) {
   case '/foods':
     recipesData = [...stateFoodsRecipes];
     typeOfRecipes = 'Meal';
@@ -37,7 +41,7 @@ const RecipesScreen = ({ match: { path } }) => {
     break;
   }
   // console.log('stateActiveFilter: ', stateActiveFilter);
-  if (recipesData.length >= FIRST_12_RECIPES && stateActiveFilter === '') {
+  if (recipesData.length >= FIRST_12_RECIPES && stateActiveFilter === 'All') {
     const editableRecipeData = [];
     for (let index = 0; index < FIRST_12_RECIPES; index += 1) {
       editableRecipeData.push(recipesData[index]);
@@ -62,14 +66,16 @@ const RecipesScreen = ({ match: { path } }) => {
   }
   recipesCategories.unshift('All');
   // console.log('stateDrinkRecipes: ', stateDrinksRecipes);
-  console.log('recipesData: ', recipesData);
+  // console.log('recipesData: ', recipesData);
+  // console.log('pathName: ', pathname);
   // console.log('stateFoodsRecipes: ', stateFoodsRecipes);
   // console.log('stateDrinksRecipes: ', stateDrinksRecipes);
-  // console.log('path - RecipesScreen: ', path);
+  // console.log('editableStateRecipes: ', editableStateRecipes);
   // console.log('recipesCategories: ', recipesCategories);
 
   return (
     <section>
+      <Header />
       <section className="section-filters-recipes">
         {recipesCategories.map((category) => (
           <button
@@ -101,6 +107,9 @@ const RecipesScreen = ({ match: { path } }) => {
           </Link>
         ))}
       </section>
+      <br />
+      <br />
+      <BottomMenu />
     </section>
   );
 };
