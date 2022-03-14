@@ -1,0 +1,46 @@
+import React, { useContext, useEffect } from 'react';
+import propTypes from 'prop-types';
+import RecipeDetails from '../components/recipesDetails/recipeDetails';
+import Context from '../context/Context';
+import fetchRecipesAPI from '../services/fetchRecipesAPI';
+import RecomentationRecipe from '../components/recipesDetails/recomendationRecipe';
+import StartContinueFinishButton from '../services/startContinueFinishButton';
+
+function FoodDetails({ match: { params } }) {
+  const foodIdDetails = params.slug;
+  const {
+    foodDetails,
+    setfoodDetails,
+    allFoodRecipes,
+    setAllFoodRecipes,
+  } = useContext(Context);
+
+  useEffect(() => {
+    fetchRecipesAPI(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodIdDetails}`)
+      .then((data) => setfoodDetails(data));
+  }, []);
+
+  const { meals } = foodDetails;
+  const urlDrinkRecipes = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  const recipeType = 'food';
+
+  return (
+    <div>
+      {meals && meals.map((food) => (
+        <RecipeDetails key={ food.idMeal } recipe={ food } />
+      )) }
+      <RecomentationRecipe
+        urlRecipesApi={ urlDrinkRecipes }
+        stateContext={ allFoodRecipes }
+        setStateContext={ setAllFoodRecipes }
+      />
+      {meals && StartContinueFinishButton(meals, recipeType)}
+    </div>
+  );
+}
+
+FoodDetails.propTypes = {
+  slug: propTypes.string,
+}.isRequired;
+
+export default FoodDetails;
