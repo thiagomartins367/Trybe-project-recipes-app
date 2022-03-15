@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import Context from '../../context/Context';
 import profileIcon from '../../images/profileIcon.svg';
 import searchIcon from '../../images/searchIcon.svg';
+import {
+  ingredientSearch,
+  nameLatterSearch,
+  searchLatterSearch,
+} from '../../services/fetchSearchFilter';
 
 export default function Header() {
   const [searchBarEnable, setSearchBarEnable] = useState(false);
   const [search, setSearch] = useState('');
   const [radio, setRadio] = useState('');
+  // const [searchFilter, setSearchFilter] = useState('');
+
+  const { setEditableStateRecipes, setActiveFilter } = useContext(Context);
 
   const history = useHistory();
   const { location: { pathname } } = history;
@@ -27,6 +36,36 @@ export default function Header() {
   const onChangSearch = ({ target: { value } }) => setSearch(value);
   const onChangeRadio = ({ target: { value } }) => {
     setRadio(value);
+  };
+  const handleClickSearchInput = () => {
+    switch (radio) {
+    case 'ingredient':
+      ingredientSearch(search)
+        .then((response) => {
+          setEditableStateRecipes(response);
+          setActiveFilter('');
+        });
+      break;
+    case 'name':
+      nameLatterSearch(search)
+        .then((response) => {
+          setEditableStateRecipes(response);
+          setActiveFilter('');
+        });
+      break;
+    case 'fist-letter':
+      searchLatterSearch(search)
+        .then((response) => {
+          setEditableStateRecipes(response);
+          setActiveFilter('');
+        });
+      if (search.length > 1) {
+        global.alert('Your search must have only 1 (one) character');
+      }
+      break;
+    default:
+      break;
+    }
   };
   return (
     <header>
@@ -107,8 +146,15 @@ export default function Header() {
               </div>
             </div>
             <p />
-            {radio}
-            <button type="button" data-testid="exec-search-btn">Search</button>
+            {/* {console.log(searchFilter)} */}
+
+            <button
+              type="button"
+              data-testid="exec-search-btn"
+              onClick={ handleClickSearchInput }
+            >
+              Search
+            </button>
           </>
         )}
       </div>
