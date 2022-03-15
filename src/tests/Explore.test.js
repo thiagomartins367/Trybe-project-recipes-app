@@ -16,7 +16,7 @@ describe('Teste da página Explore.js', () => {
     expect(exploreDrinksBtn).toBeInTheDocument();
   });
 
-  it('se o botão "Explore Foods" redireciona para outra rota', () => {
+  it('o botão "Explore Foods" redireciona para outra rota', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/explore');
 
@@ -29,7 +29,7 @@ describe('Teste da página Explore.js', () => {
     expect(pathname).toBe('/explore/foods');
   });
 
-  it('se o botão "Explore Drinks" redireciona para outra rota', () => {
+  it('o botão "Explore Drinks" redireciona para outra rota', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/explore');
 
