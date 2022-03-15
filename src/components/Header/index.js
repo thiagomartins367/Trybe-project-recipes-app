@@ -6,6 +6,7 @@ import searchIcon from '../../images/searchIcon.svg';
 export default function Header() {
   const [searchBarEnable, setSearchBarEnable] = useState(false);
   const [search, setSearch] = useState('');
+  const [radio, setRadio] = useState('');
 
   const history = useHistory();
   const { location: { pathname } } = history;
@@ -24,6 +25,9 @@ export default function Header() {
     }
   }
   const onChangSearch = ({ target: { value } }) => setSearch(value);
+  const onChangeRadio = ({ target: { value } }) => {
+    setRadio(value);
+  };
   return (
     <header>
       <section className="section-header">
@@ -56,13 +60,56 @@ export default function Header() {
       </section>
       <div className="header-div-search-bar">
         {searchBarEnable && (
-          <input
-            type="text"
-            value={ search }
-            placeholder="Search Recipe"
-            data-testid="search-input"
-            onChange={ onChangSearch }
-          />
+          <>
+            <input
+              type="text"
+              value={ search }
+              placeholder="Search Recipe"
+              data-testid="search-input"
+              onChange={ onChangSearch }
+            />
+            <div style={ { display: 'flex', alignItems: 'space-between' } }>
+              <div style={ { marginLeft: '8px' } }>
+                <label htmlFor="ingredient-name">
+                  <input
+                    type="radio"
+                    data-testid="ingredient-search-radio"
+                    name="product"
+                    value="ingredient"
+                    onChange={ onChangeRadio }
+                  />
+                  Ingredient
+                </label>
+              </div>
+              <div style={ { marginLeft: '8px' } }>
+                <label htmlFor="name">
+                  <input
+                    type="radio"
+                    data-testid="name-search-radio"
+                    name="product"
+                    value="name"
+                    onChange={ onChangeRadio }
+                  />
+                  Name
+                </label>
+              </div>
+              <div style={ { marginLeft: '8px' } }>
+                <label htmlFor="fist-letter">
+                  <input
+                    type="radio"
+                    data-testid="first-letter-search-radio"
+                    name="product"
+                    value="fist-letter"
+                    onChange={ onChangeRadio }
+                  />
+                  Fist Letter
+                </label>
+              </div>
+            </div>
+            <p />
+            {radio}
+            <button type="button" data-testid="exec-search-btn">Search</button>
+          </>
         )}
       </div>
     </header>
