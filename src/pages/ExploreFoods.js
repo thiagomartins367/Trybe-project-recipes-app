@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import BottomMenu from '../components/BottomMenu';
 import Header from '../components/Header';
-import { fetchRandonFood } from '../services/fecthAPI';
+import { fetchRandonFood } from '../services/fetchRandomRecipe';
 
 function ExploreFoods() {
   const history = useHistory();

@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import BottomMenu from '../components/BottomMenu';
 import Header from '../components/Header';
+import Context from '../context/Context';
 
 function Profile() {
   const history = useHistory();
-  const [email, setEmail] = useState({ email: '' });
+  const { setEmail, emailProfile, setEmailProfile } = useContext(Context);
 
   useEffect(() => {
     const userEmail = JSON.parse(localStorage.getItem('user'));
     if (userEmail !== null) {
-      setEmail(userEmail);
+      setEmailProfile(userEmail);
     }
   }, []);
+
   return (
     <div>
       <Header />
-      <h3 data-testid="profile-email">{email.email}</h3>
+      <h3 data-testid="profile-email">{emailProfile.email}</h3>
       <button
         type="button"
         data-testid="profile-done-btn"
@@ -40,6 +42,7 @@ function Profile() {
         data-testid="profile-logout-btn"
         onClick={ () => {
           localStorage.clear();
+          setEmail('');
           history.push('/');
         } }
       >
