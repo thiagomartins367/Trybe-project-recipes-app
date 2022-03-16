@@ -11,7 +11,9 @@ const ContextProvider = ({ children }) => {
   const { contextProfileObj } = ContextProfile();
 
   const context = {
-    ...contextRecipesObj, ...contextLoginObj, ...contextProfileObj,
+    ...contextRecipesObj,
+    ...contextLoginObj,
+    ...contextProfileObj,
   };
   return (
     <Context.Provider value={ context }>
