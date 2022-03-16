@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import icon from '../../images/shareIcon.svg';
 
@@ -15,6 +15,7 @@ function Card({
   alcoholicOrNot,
 }) {
   const checkType = type === 'food' ? nationality : alcoholicOrNot;
+  const [copy, setCopy] = useState(false);
   return (
     <li key={ id }>
       <img
@@ -29,18 +30,28 @@ function Card({
         {`Categoria:  ${checkType} - ${category}`}
       </p>
       <p data-testid={ `${index}-horizontal-done-date` }>{`Data: ${doneDate}`}</p>
-      <span key={ tags } data-testid={ `${index}-${tags[0]}-horizontal-tag` }>
+      <span>
         Tags:
-        <span key={ tags } data-testid={ `${index}-${tags[1]}-horizontal-tag` } />
-        {` ${tags}`}
+        {tags.map((tag) => (
+          <span key={ tag } data-testid={ `${index}-${tag}-horizontal-tag` }>
+            {` ${tag}`}
+          </span>
+        ))}
       </span>
       <button
         type="button"
         data-testid={ `${index}-horizontal-share-btn` }
         src={ icon }
+        onClick={ () => {
+          navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
+          // https://developer.mozilla.org/en-US/docs/Web/API/Location/origin
+          // https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
+          setCopy(true);
+        } }
       >
         Compartilhar
       </button>
+      { copy && <p>Link copied!</p>}
     </li>
   );
 }
