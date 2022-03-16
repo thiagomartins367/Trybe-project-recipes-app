@@ -20,7 +20,7 @@ const RecipeDetailsContext = () => {
     setFavorite,
   };
 
-  return (recipeDetailsContext);
+  return { recipeDetailsContext };
 };
 
 export default RecipeDetailsContext;

@@ -7,42 +7,16 @@ import ContextLogin from './ContextLogin/ContextLogin';
 import ContextProfile from './ContextProfile/ContextProfile';
 
 const ContextProvider = ({ children }) => {
-  const {
-    foodDetails,
-    setfoodDetails,
-    drinkDetails,
-    setDrinkDetails,
-    allFoodRecipes,
-    setAllFoodRecipes,
-    allDrinkRecipes,
-    setAllDrinkRecipes,
-    favorite,
-    setFavorite,
-  } = RecipeDetailsContext();
-
-  const contextRecipeDetailsContext = {
-    foodDetails,
-    setfoodDetails,
-    drinkDetails,
-    setDrinkDetails,
-    allFoodRecipes,
-    setAllFoodRecipes,
-    allDrinkRecipes,
-    setAllDrinkRecipes,
-    favorite,
-    setFavorite,
-  };
-
-const ContextProvider = ({ children }) => {
   const { contextRecipesObj } = ContextRecipesScreen();
   const { contextLoginObj } = ContextLogin();
   const { contextProfileObj } = ContextProfile();
+  const { recipeDetailsContext } = RecipeDetailsContext();
 
   const context = {
     ...contextRecipesObj,
     ...contextLoginObj,
     ...contextProfileObj,
-    ...contextRecipeDetailsContext,
+    ...recipeDetailsContext,
   };
   return (
     <Context.Provider value={ context }>
