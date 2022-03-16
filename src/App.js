@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch } from 'react-router-dom';
 import ContextProvider from './context/ContextProvider';
 import Login from './pages/Login';
+import DoneRecipes from './pages/DoneRecipes';
 import RecipesScreen from './pages/RecipesScreen';
 import Profile from './pages/Profile';
 import Explore from './pages/Explore';
@@ -23,12 +24,16 @@ function App() {
           <Route exact path="/profile" component={ Profile } />
           <Route exact path="/explore/foods" component={ ExploreFoods } />
           <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+<<<<<<< HEAD
           <Route exact path="/explore/foods/ingredients" component={ FoodsIngredients } />
           <Route
             exact
             path="/explore/drinks/ingredients"
             component={ DrinksIngredients }
           />
+=======
+          <Route path="/done-recipes" component={ DoneRecipes } />
+>>>>>>> main-group-4
           <Route exact path="/" component={ Login } />
           {/* <Route exact path="/foods/:id-da-receita" component={ } />
           <Route exact path="/drinks/:id-da-receita" component={ } />
