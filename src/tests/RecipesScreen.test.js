@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+import beefMeals from '../../cypress/mocks/beefMeals';
 import drinkCategories from '../../cypress/mocks/drinkCategories';
 import mealCategories from '../../cypress/mocks/mealCategories';
 import { meals } from '../../cypress/mocks/meals';
@@ -72,6 +73,20 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       expect(getByTestId(`${category}-category-filter`)).toBeInTheDocument();
     });
   };
+  const checkRecipesFromSelectedCategory = async (getByTestId, firstRecipeName, mockCategoriesImgs, dataTestIdCategoryRecipe) => {
+    const waitForRendering = await screen.findByText('Beef');
+    expect(waitForRendering.textContent).toBe('Beef');
+    userEvent.click(getByTestId(dataTestIdCategoryRecipe));
+    const waitForRenderingRecipes = await screen.findByText(firstRecipeName);
+    expect(waitForRenderingRecipes.textContent).toBe(firstRecipeName);
+    const categoryRecipesImg = [];
+    for (let index = 0; index < FIRST_12_RECIPES; index += 1) {
+      categoryRecipesImg.push(getByTestId(`${index}-card-img`));
+    }
+    categoryRecipesImg.forEach((htmlElement) => {
+      expect(mockCategoriesImgs).toContain(htmlElement.src);
+    });
+  };
   it('Verifica se há todos os 12 cards de receitas na tela "/foods"', async () => {
     const { getByTestId, history } = renderWithRouter(<App />);
     history.push('/foods');
@@ -104,7 +119,28 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     drinksCategories[2] = { strCategory: 'Shake' };
     await checkRecipesCategoriesFilters(getByTestId, drinksCategories, 'Ordinary Drink');
   });
-  it.skip('Verifica se são exibidas as comidas corretas quando a categoria "Beef" está selecionada.', () => {
-
+  it('Verifica se são exibidas as comidas corretas quando a categoria "Beef" está selecionada.', async () => {
+    const { getByTestId, history } = renderWithRouter(<App />);
+    history.push('/foods');
+    const beefCategory = [...beefMeals.meals];
+    const beefCategoryImg = [];
+    beefCategory.push({
+      'strMeal': 'Beef Rendang',
+      'strMealThumb': 'https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg',
+      'idMeal': '53053',
+    });
+    beefCategory.forEach((recipeObj) => {
+      beefCategoryImg.push(recipeObj.strMealThumb);
+    });
+    await checkRecipesFromSelectedCategory(getByTestId, beefCategory[0].strMeal, beefCategoryImg, 'Beef-category-filter');
+  });
+  it('Verifica se são exibidas as comidas corretas quando a categoria "Beef" está selecionada.', async () => {
+    const { getByTestId, history } = renderWithRouter(<App />);
+    history.push('/foods');
+    const beefCategoryImg = [];
+    beefMeals.meals.forEach((recipeObj) => {
+      beefCategoryImg.push(recipeObj.strMealThumb);
+    });
+    await checkRecipesFromSelectedCategory(getByTestId, beefCategory[0].strMeal, beefCategoryImg, 'Beef-category-filter');
   });
 });
