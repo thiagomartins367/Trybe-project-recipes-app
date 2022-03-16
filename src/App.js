@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import ContextProvider from './context/ContextProvider';
 import Login from './pages/Login';
+import DoneRecipes from './pages/DoneRecipes';
+// import FavoriteRecipes from './pages/FavoriteRecipes';
 
 function App() {
   return (
@@ -24,8 +26,8 @@ function App() {
             <Route path="/explore/drinks/ingredients" component={ } />
             <Route path="/explore/foods/nationalities" component={ } />
             <Route path="/profile" component={ } />
-            <Route path="/done-recipes" component={ } />
-            <Route path="/favorite-recipes" component={ } /> */}
+            <Route path="/favorite-recipes" component={ FavoriteRecipes } /> */}
+            <Route path="/done-recipes" component={ DoneRecipes } />
             <Route exact path="/" component={ Login } />
           </Switch>
         </BrowserRouter>
