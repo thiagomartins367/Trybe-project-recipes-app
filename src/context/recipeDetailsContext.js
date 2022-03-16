@@ -1,15 +1,11 @@
 import { useState } from 'react';
 
-// const STATE_INPROGRESS = {
-//   foodIds: [],
-//   drinkIds: [],
-// };
-
 const RecipeDetailsContext = () => {
   const [foodDetails, setfoodDetails] = useState({});
   const [drinkDetails, setDrinkDetails] = useState({});
   const [allFoodRecipes, setAllFoodRecipes] = useState({});
   const [allDrinkRecipes, setAllDrinkRecipes] = useState({});
+  const [favorite, setFavorite] = useState(false);
 
   const recipeDetailsContext = {
     foodDetails,
@@ -20,6 +16,8 @@ const RecipeDetailsContext = () => {
     setAllFoodRecipes,
     allDrinkRecipes,
     setAllDrinkRecipes,
+    favorite,
+    setFavorite,
   };
 
   return (recipeDetailsContext);

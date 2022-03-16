@@ -13,7 +13,7 @@ function RecipeDetails({ recipe }) {
         image={ recipe.strMealThumb || recipe.strDrinkThumb }
         category={ recipe.strAlcoholic || recipe.strCategory }
       />
-      <FavoriteButton />
+      <FavoriteButton recipe={ recipe } />
       <ShareButton />
       <IngredientList recipe={ recipe } />
       <h4>

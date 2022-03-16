@@ -4,11 +4,11 @@ function ContinueRecipeButton() {
   return (
     <button
       type="button"
-      data-testid="continue-recipe-btn"
+      data-testid="start-recipe-btn"
       style={ { position: 'fixed', bottom: 0 } }
       onClick={ () => redirectRecipeProgress() }
     >
-      Continuar Receita
+      Continue Recipe
     </button>
   );
 }

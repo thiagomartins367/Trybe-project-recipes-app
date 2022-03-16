@@ -4,7 +4,22 @@ import RecipeDetails from '../components/recipesDetails/recipeDetails';
 import Context from '../context/Context';
 import fetchRecipesAPI from '../services/fetchRecipesAPI';
 import RecomentationRecipe from '../components/recipesDetails/recomendationRecipe';
-import StartRecipeButton from '../components/recipesDetails/startRecipeButton';
+import StartContinueFinishButton from '../services/startContinueFinishButton';
+
+const INITIAL_STORAGE_PROGRESS = {
+  meals: {},
+  cocktails: {},
+};
+
+// const INITIAL_STORAGE_FAVOTIRE = [{
+//   id: '',
+//   type: '',
+//   nationality: '',
+//   category: '',
+//   alcoholicOrNot: '',
+//   name: '',
+//   image: '',
+// }];
 
 function DrinkDetails({ match: { params } }) {
   const drinkIdDetails = params.slug;
@@ -18,10 +33,16 @@ function DrinkDetails({ match: { params } }) {
   useEffect(() => {
     fetchRecipesAPI(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIdDetails}`)
       .then((data) => setDrinkDetails(data));
+    const returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (returnStorage === null) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify(INITIAL_STORAGE_PROGRESS));
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    }
   }, []);
 
   const { drinks } = drinkDetails;
   const urlFoodRecipes = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+  const recipeType = 'drink';
 
   return (
     <div>
@@ -33,7 +54,7 @@ function DrinkDetails({ match: { params } }) {
         stateContext={ allDrinkRecipes }
         setStateContext={ setAllDrinkRecipes }
       />
-      {drinks && <StartRecipeButton recipe={ drinks } recipeType="drink" />}
+      {drinks && StartContinueFinishButton(drinks, recipeType)}
     </div>
   );
 }

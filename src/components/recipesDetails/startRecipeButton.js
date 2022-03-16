@@ -8,18 +8,20 @@ function StartRecipeButton({ recipe, recipeType }) {
   const ingredientList = IngredientOrganization(recipe[0]);
 
   const redirectRecipeProgress = () => {
+    const returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (recipeType === 'food') {
-      const foodStorage = {
+      const foodStorage = { ...returnStorage,
         meals: { [recipe[0].idMeal]: ingredientList } };
+      console.log(foodStorage);
       localStorage.setItem('inProgressRecipes', JSON.stringify(foodStorage));
       const idRecipeFood = recipe[0].idMeal;
       history.push(`/foods/${idRecipeFood}/in-progress`);
     } else {
-      const drinkStorage = {
+      const drinkStorage = { ...returnStorage,
         cocktails: { [recipe[0].idDrink]: ingredientList } };
+      console.log(drinkStorage);
       localStorage.setItem('inProgressRecipes', JSON.stringify(drinkStorage));
       const idRecipeDrink = recipe[0].idDrink;
-      setRecipesInProgress(() => ([idRecipeDrink]));
       history.push(`/drinks/${idRecipeDrink}/in-progress`);
     }
   };

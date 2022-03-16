@@ -13,6 +13,8 @@ const ContextProvider = ({ children }) => {
     setAllFoodRecipes,
     allDrinkRecipes,
     setAllDrinkRecipes,
+    favorite,
+    setFavorite,
   } = RecipeDetailsContext();
 
   const context = {
@@ -24,6 +26,8 @@ const ContextProvider = ({ children }) => {
     setAllFoodRecipes,
     allDrinkRecipes,
     setAllDrinkRecipes,
+    favorite,
+    setFavorite,
   };
 
   return (
