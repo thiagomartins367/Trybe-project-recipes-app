@@ -38,30 +38,30 @@ export default function Header() {
     setRadio(value);
   };
   const handleClickSearchInput = () => {
-    const ingredient = pathName === '/foods' ? ingredientSearch : ingredientSearchDrink;
-    const name = pathName === '/foods' ? nameLatterSearch : nameLatterSearchDrink;
-    const latter = pathName === '/foods' ? searchLatterSearch : searchLatterSearchDrink;
+    const ingredient = pathName === 'foods/' ? ingredientSearch : ingredientSearchDrink;
+    const name = pathName === 'foods/' ? nameLatterSearch : nameLatterSearchDrink;
+    const latter = pathName === 'foods/' ? searchLatterSearch : searchLatterSearchDrink;
     switch (radio) {
     case 'ingredient':
       ingredient(search)
         .then((response) => {
           setEditableStateRecipes(response);
-          setActiveFilter('');
         });
+      setActiveFilter('');
       break;
     case 'name':
       name(search)
         .then((response) => {
           setEditableStateRecipes(response);
-          setActiveFilter('');
         });
+      setActiveFilter('');
       break;
     case 'fist-letter':
       latter(search)
         .then((response) => {
           setEditableStateRecipes(response);
-          setActiveFilter('');
         });
+      setActiveFilter('');
       if (search.length > 1) {
         global.alert('Your search must have only 1 (one) character');
       }
@@ -149,8 +149,6 @@ export default function Header() {
               </div>
             </div>
             <p />
-            {/* {console.log(searchFilter)} */}
-
             <button
               type="button"
               data-testid="exec-search-btn"
