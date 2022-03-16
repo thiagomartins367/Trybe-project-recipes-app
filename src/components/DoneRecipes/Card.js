@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import icon from '../../images/shareIcon.svg';
 
 function Card({
@@ -18,14 +19,16 @@ function Card({
   const [copy, setCopy] = useState(false);
   return (
     <li key={ id }>
-      <img
-        data-testid={ `${index}-horizontal-image` }
-        src={ image }
-        alt={ name }
-        width="100px"
-        height="100px"
-      />
-      <p data-testid={ `${index}-horizontal-name` }>{`Nome: ${name}`}</p>
+      <Link key={ id } to={ `/${type}s/${id}` }>
+        <img
+          data-testid={ `${index}-horizontal-image` }
+          src={ image }
+          alt={ name }
+          width="100px"
+          height="100px"
+        />
+        <p data-testid={ `${index}-horizontal-name` }>{`Nome: ${name}`}</p>
+      </Link>
       <p data-testid={ `${index}-horizontal-top-text` }>
         {`Categoria:  ${checkType} - ${category}`}
       </p>
