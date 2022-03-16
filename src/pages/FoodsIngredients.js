@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BottomMenu from '../components/BottomMenu';
 import Header from '../components/Header';
 import { CARDS } from '../constants';
 import { fetchIngredientFood } from '../services/fetchIngredients';
@@ -31,6 +32,7 @@ function FoodsIngredients() {
           </a>
         </div>
       ))}
+      <BottomMenu />
     </div>
   );
 }
