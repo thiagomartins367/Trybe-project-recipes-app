@@ -1,70 +1,68 @@
 import React from 'react';
-// import './App.css';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
-// import rockGlass from './images/rockGlass.svg';
+import { Route, Switch } from 'react-router-dom';
 import ContextProvider from './context/ContextProvider';
-import DrinkDetails from './pages/drinkDetails';
-import FoodDetails from './pages/foodDetails';
-import Login from './pages/login';
-import NotFound from './pages/notFound';
+import Login from './pages/Login';
+import DoneRecipes from './pages/DoneRecipes';
+import RecipesScreen from './pages/RecipesScreen';
+import Profile from './pages/Profile';
+import Explore from './pages/Explore';
+import ExploreFoods from './pages/ExploreFoods';
+import ExploreDrinks from './pages/ExploreDrinks';
 import RecipeInProgress from './pages/recipeInProgress';
+import FoodDetails from './pages/foodDetails';
+import DrinkDetails from './pages/drinkDetails';
+import NotFound from './pages/notFound';
 
 function App() {
   return (
-    // <div className="meals">
-    <div>
+    <main>
       <ContextProvider>
-        <BrowserRouter>
-          <Switch>
-            {/* <Route path="/foods" component={ } />
-            <Route path="/drinks" component={ } /> */}
-            <Route
-              exact
-              path="/foods/:slug/in-progress"
-              render={ () => <RecipeInProgress /> }
-              // component={ RecipeInProgress }
-            />
-            <Route
-              exact
-              path="/drinks/:slug/in-progress"
-              component={ RecipeInProgress }
-            />
-            <Route
-              exact
-              path="/foods/:slug"
-              render={ (propsRoute) => (
-                <FoodDetails { ...propsRoute } />) }
-            />
-            <Route
-              exact
-              path="/drinks/:slug"
-              render={ (propsRoute) => (
-                <DrinkDetails { ...propsRoute } />) }
-            />
-            {/* <Route path="/explore" component={ } />
-            <Route path="/explore/foods" component={ } />
-            <Route path="/explore/drinks" component={ } />
-            <Route path="/explore/foods/ingredients" component={ } />
-            <Route path="/explore/drinks/ingredients" component={ } />
-            <Route path="/explore/foods/nationalities" component={ } />
-            <Route path="/profile" component={ } />
-            <Route path="/done-recipes" component={ } />
-            <Route path="/favorite-recipes" component={ } /> */}
-            <Route exact path="/" component={ Login } />
-            <Route path="*" component={ NotFound } />
-          </Switch>
-        </BrowserRouter>
+        <Switch>
+          <Route
+            exact
+            path="/foods/:id-receita/in-progress"
+            render={ () => <RecipeInProgress /> }
+          />
+          <Route
+            exact
+            path="/drinks/:id-receita/in-progress"
+            component={ RecipeInProgress }
+          />
+          <Route
+            exact
+            path="/foods/:id-receita"
+            render={ (propsRoute) => (
+              <FoodDetails { ...propsRoute } />) }
+          />
+          <Route
+            exact
+            path="/drinks/:id-receita"
+            render={ (propsRoute) => (
+              <DrinkDetails { ...propsRoute } />) }
+          />
+          <Route exact path="/foods" component={ RecipesScreen } />
+          <Route exact path="/drinks" component={ RecipesScreen } />
+          <Route exact path="/explore" component={ Explore } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+          <Route path="/done-recipes" component={ DoneRecipes } />
+          <Route exact path="/" component={ Login } />
+          <Route path="*" component={ NotFound } />
+          {/* <Route exact path="/foods/:id-da-receita" component={ } />
+          <Route exact path="/drinks/:id-da-receita" component={ } />
+          <Route exact path="/foods/:id-da-receita/in-progress" component={ } />
+          <Route exact path="/drinks/:id-da-receita/in-progress" component={ } />
+          <Route exact path="/explore/foods/ingredients" component={ } />
+          <Route exact path="/explore/drinks/ingredients" component={ } />
+          <Route exact path="/explore/foods/nationalities" component={ } />
+          <Route exact path="/done-recipes" component={ } />
+          <Route exact path="/favorite-recipes" component={ }/> */}
+        </Switch>
       </ContextProvider>
-      {/* <span className="logo">TRYBE</span>
-      <object
-        className="rocksGlass"
-        type="image/svg+xml"
-        data={ rockGlass }
-      >
-        Glass
-      </object> */}
-    </div>
+    </main>
   );
 }
 
