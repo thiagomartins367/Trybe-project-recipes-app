@@ -1,38 +1,41 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import ContextProvider from './context/ContextProvider';
 import Login from './pages/Login';
 import DoneRecipes from './pages/DoneRecipes';
-// import FavoriteRecipes from './pages/FavoriteRecipes';
+import RecipesScreen from './pages/RecipesScreen';
+import Profile from './pages/Profile';
+import Explore from './pages/Explore';
+import ExploreFoods from './pages/ExploreFoods';
+import ExploreDrinks from './pages/ExploreDrinks';
 
 function App() {
   return (
-    <div className="meals">
+    <main>
       <ContextProvider>
-        <BrowserRouter>
-          <Switch>
-            {/* <Route path="/foods" component={Foods} />
-            <Route path="/drinks" component={ } />
-            <Route path="/foods/:id-da-receita" component={ } />
-            <Route path="/drinks/:id-da-receita" component={ } />
-            <Route path="/foods/:id-da-receita/in-progress" component={ } />
-            <Route path="/drinks/:id-da-receita/in-progress" component={ } />
-            <Route path="/explore" component={ } />
-            <Route path="/explore/foods" component={ } />
-            <Route path="/explore/drinks" component={ } />
-            <Route path="/explore/foods/ingredients" component={ } />
-            <Route path="/explore/drinks/ingredients" component={ } />
-            <Route path="/explore/foods/nationalities" component={ } />
-            <Route path="/profile" component={ } />
-            <Route path="/favorite-recipes" component={ FavoriteRecipes } /> */}
-            <Route path="/done-recipes" component={ DoneRecipes } />
-            <Route exact path="/" component={ Login } />
-          </Switch>
-        </BrowserRouter>
+        <Switch>
+          <Route exact path="/foods" component={ RecipesScreen } />
+          <Route exact path="/drinks" component={ RecipesScreen } />
+          <Route exact path="/explore" component={ Explore } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/explore/foods" component={ ExploreFoods } />
+          <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+          <Route path="/done-recipes" component={ DoneRecipes } />
+          <Route exact path="/" component={ Login } />
+          {/* <Route exact path="/foods/:id-da-receita" component={ } />
+          <Route exact path="/drinks/:id-da-receita" component={ } />
+          <Route exact path="/foods/:id-da-receita/in-progress" component={ } />
+          <Route exact path="/drinks/:id-da-receita/in-progress" component={ } />
+          <Route exact path="/explore/foods/ingredients" component={ } />
+          <Route exact path="/explore/drinks/ingredients" component={ } />
+          <Route exact path="/explore/foods/nationalities" component={ } />
+          <Route exact path="/done-recipes" component={ } />
+          <Route exact path="/favorite-recipes" component={ }/> */}
+        </Switch>
       </ContextProvider>
-    </div>
+    </main>
   );
 }
 

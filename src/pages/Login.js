@@ -1,23 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-
-const MIN_LENGTH = 6;
+import Context from '../context/Context';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [disabled, setDisabled] = useState(true);
   const history = useHistory();
-
-  useEffect(() => {
-    const emailCheck = email.toLowerCase().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-    const passwordCheck = password.length > MIN_LENGTH;
-    if (emailCheck && passwordCheck) {
-      setDisabled(false);
-    } else {
-      setDisabled(true);
-    }
-  }, [email, password]);
+  const { setEmail, setPassword, disabled, email } = useContext(Context);
 
   return (
     <form>
@@ -25,6 +12,7 @@ function Login() {
       <input
         placeholder="Email"
         type="email"
+        value={ email }
         data-testid="email-input"
         onChange={ ({ target }) => setEmail(target.value) }
       />
