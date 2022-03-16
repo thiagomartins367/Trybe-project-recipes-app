@@ -5,10 +5,10 @@ import renderWithRouter from '../helpers/renderWithRouter';
 import App from '../App';
 
 describe('Teste da página ExploreFoods.js', () => {
-  const historyFoods = '/explore/foods';
-  it('há 3 botões na tela', () => {
+  const HISTORYFOODS = '/explore/foods';
+  it('há três botões na tela', () => {
     const { history } = renderWithRouter(<App />);
-    history.push(historyFoods);
+    history.push(HISTORYFOODS);
 
     const exploreByIngredientBtn = screen.getByTestId('explore-by-ingredient');
     expect(exploreByIngredientBtn).toBeInTheDocument();
@@ -19,9 +19,9 @@ describe('Teste da página ExploreFoods.js', () => {
     const exploreSurpriseBtn = screen.getByTestId('explore-surprise');
     expect(exploreSurpriseBtn).toBeInTheDocument();
   });
-  it('o botão "Explore By Ingredient" redireciona para outra rota', () => {
+  it('há um botão que redireciona para ingredientes', () => {
     const { history } = renderWithRouter(<App />);
-    history.push(historyFoods);
+    history.push(HISTORYFOODS);
 
     const exploreByIngredientBtn = screen.getByTestId('explore-by-ingredient');
     userEvent.click(exploreByIngredientBtn);
@@ -31,9 +31,9 @@ describe('Teste da página ExploreFoods.js', () => {
     } = history;
     expect(pathname).toBe('/explore/foods/ingredients');
   });
-  it('o botão "Explore By Nationality" redireciona para outra rota', () => {
+  it('há um botão que redireciona para nacionalidades', () => {
     const { history } = renderWithRouter(<App />);
-    history.push(historyFoods);
+    history.push(HISTORYFOODS);
 
     const exploreByNationalityBtn = screen.getByTestId('explore-by-nationality');
     userEvent.click(exploreByNationalityBtn);
@@ -43,16 +43,14 @@ describe('Teste da página ExploreFoods.js', () => {
     } = history;
     expect(pathname).toBe('/explore/foods/nationalities');
   });
-  it('o botão "Surprise me" redireciona para outra rota', () => {
+  it('há um botão que redireciona para uma "surpresa"', async () => {
     const { history } = renderWithRouter(<App />);
-    history.push(historyFoods);
+    history.push(HISTORYFOODS);
 
-    const exploreSurpriseBtn = screen.getByTestId('explore-surprise');
+    const exploreSurpriseBtn = await screen.findByTestId('explore-surprise');
     userEvent.click(exploreSurpriseBtn);
 
-    const {
-      location: { pathname },
-    } = history;
-    expect(pathname).toBe('/explore/foods');
+    const title = await screen.findByTestId('recipe-title');
+    expect(title).toBeInTheDocument();
   });
 });

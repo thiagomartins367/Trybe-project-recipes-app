@@ -5,10 +5,10 @@ import renderWithRouter from '../helpers/renderWithRouter';
 import App from '../App';
 
 describe('Teste da página ExploreDrinks.js', () => {
-  const historyDrinks = '/explore/drinks';
+  const HISTORYDRINKS = '/explore/drinks';
   it('há dois botões na tela', () => {
     const { history } = renderWithRouter(<App />);
-    history.push(historyDrinks);
+    history.push(HISTORYDRINKS);
 
     const exploreByIngredientBtn = screen.getByTestId('explore-by-ingredient');
     expect(exploreByIngredientBtn).toBeInTheDocument();
@@ -16,9 +16,9 @@ describe('Teste da página ExploreDrinks.js', () => {
     const exploreSurpriseBtn = screen.getByTestId('explore-surprise');
     expect(exploreSurpriseBtn).toBeInTheDocument();
   });
-  it('o botão "Explore By Ingredient" redireciona para outra rota', () => {
+  it('há um botão que redireciona para ingredientes', () => {
     const { history } = renderWithRouter(<App />);
-    history.push(historyDrinks);
+    history.push(HISTORYDRINKS);
 
     const exploreByIngredientBtn = screen.getByTestId('explore-by-ingredient');
     userEvent.click(exploreByIngredientBtn);
@@ -28,16 +28,14 @@ describe('Teste da página ExploreDrinks.js', () => {
     } = history;
     expect(pathname).toBe('/explore/drinks/ingredients');
   });
-  it('o botão "Surprise me" redireciona para outra rota', () => {
+  it('há um botão que redireciona para uma "surpresa"', async () => {
     const { history } = renderWithRouter(<App />);
-    history.push(historyDrinks);
+    history.push(HISTORYDRINKS);
 
-    const exploreSurpriseBtn = screen.getByTestId('explore-surprise');
+    const exploreSurpriseBtn = await screen.findByTestId('explore-surprise');
     userEvent.click(exploreSurpriseBtn);
 
-    const {
-      location: { pathname },
-    } = history;
-    expect(pathname).toBe('/explore/drinks');
+    const title = await screen.findByTestId('recipe-title');
+    expect(title).toBeInTheDocument();
   });
 });
