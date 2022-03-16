@@ -7,16 +7,16 @@ import {
   ingredientSearch,
   nameLatterSearch,
   searchLatterSearch,
+  ingredientSearchDrink,
+  nameLatterSearchDrink,
+  searchLatterSearchDrink,
 } from '../../services/fetchSearchFilter';
 
 export default function Header() {
   const [searchBarEnable, setSearchBarEnable] = useState(false);
   const [search, setSearch] = useState('');
   const [radio, setRadio] = useState('');
-  // const [searchFilter, setSearchFilter] = useState('');
-
   const { setEditableStateRecipes, setActiveFilter } = useContext(Context);
-
   const history = useHistory();
   const { location: { pathname } } = history;
   const pathName = `${pathname.replace('/', '')}/`;
@@ -38,23 +38,26 @@ export default function Header() {
     setRadio(value);
   };
   const handleClickSearchInput = () => {
+    const ingredient = pathName === '/foods' ? ingredientSearch : ingredientSearchDrink;
+    const name = pathName === '/foods' ? nameLatterSearch : nameLatterSearchDrink;
+    const latter = pathName === '/foods' ? searchLatterSearch : searchLatterSearchDrink;
     switch (radio) {
     case 'ingredient':
-      ingredientSearch(search)
+      ingredient(search)
         .then((response) => {
           setEditableStateRecipes(response);
           setActiveFilter('');
         });
       break;
     case 'name':
-      nameLatterSearch(search)
+      name(search)
         .then((response) => {
           setEditableStateRecipes(response);
           setActiveFilter('');
         });
       break;
     case 'fist-letter':
-      searchLatterSearch(search)
+      latter(search)
         .then((response) => {
           setEditableStateRecipes(response);
           setActiveFilter('');
