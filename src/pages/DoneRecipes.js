@@ -60,6 +60,9 @@ function DoneRecipes() {
             tags={ recipe.tags }
             key={ recipe.id }
             index={ index }
+            type={ recipe.type }
+            nationality={ recipe.nationality }
+            alcoholicOrNot={ recipe.alcoholicOrNot }
           />
         ))}
       </ul>

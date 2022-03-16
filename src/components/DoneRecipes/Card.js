@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import icon from '../../images/shareIcon.svg';
 
 function Card({
   index,
@@ -9,7 +10,11 @@ function Card({
   image,
   doneDate,
   tags,
+  type,
+  nationality,
+  alcoholicOrNot,
 }) {
+  const checkType = type === 'food' ? nationality : alcoholicOrNot;
   return (
     <li key={ id }>
       <img
@@ -21,17 +26,18 @@ function Card({
       />
       <p data-testid={ `${index}-horizontal-name` }>{`Nome: ${name}`}</p>
       <p data-testid={ `${index}-horizontal-top-text` }>
-        {`Categoria: ${category}`}
+        {`Categoria:  ${checkType} - ${category}`}
       </p>
       <p data-testid={ `${index}-horizontal-done-date` }>{`Data: ${doneDate}`}</p>
-      <span key={ tags } data-testid={ `${index}-${tags[1]}-horizontal-tag` }>
+      <span key={ tags } data-testid={ `${index}-${tags[0]}-horizontal-tag` }>
         Tags:
-        <span key={ tags } data-testid={ `${index}-${tags[0]}-horizontal-tag` } />
+        <span key={ tags } data-testid={ `${index}-${tags[1]}-horizontal-tag` } />
         {` ${tags}`}
       </span>
       <button
         type="button"
         data-testid={ `${index}-horizontal-share-btn` }
+        src={ icon }
       >
         Compartilhar
       </button>
