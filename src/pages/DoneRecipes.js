@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../components/DoneRecipes/Card';
 
 const recipes = [
@@ -28,29 +28,33 @@ const recipes = [
 ];
 
 function DoneRecipes() {
+  const [pressedBtn, setBtnPressed] = useState('all');
   return (
     <div>
       <header>Receitas feitas</header>
       <button
         data-testid="filter-by-all-btn"
         type="button"
+        onClick={ () => setBtnPressed('all') }
       >
         All
       </button>
       <button
         data-testid="filter-by-food-btn"
         type="button"
+        onClick={ () => setBtnPressed('food') }
       >
         Food
       </button>
       <button
         data-testid="filter-by-drink-btn"
         type="button"
+        onClick={ () => setBtnPressed('drink') }
       >
         Drinks
       </button>
       <ul>
-        {recipes.map((recipe, index) => (
+        {pressedBtn === 'all' ? recipes.map((recipe, index) => (
           <Card
             id={ recipe.id }
             category={ recipe.category }
@@ -64,7 +68,22 @@ function DoneRecipes() {
             nationality={ recipe.nationality }
             alcoholicOrNot={ recipe.alcoholicOrNot }
           />
-        ))}
+        )) : recipes.filter((recipe) => recipe.type === pressedBtn)
+          .map((recipe, index) => (
+            <Card
+              id={ recipe.id }
+              category={ recipe.category }
+              name={ recipe.name }
+              image={ recipe.image }
+              doneDate={ recipe.doneDate }
+              tags={ recipe.tags }
+              key={ recipe.id }
+              index={ index }
+              type={ recipe.type }
+              alcoholicOrNot={ recipe.alcoholicOrNot }
+              nationality={ recipe.nationality }
+            />
+          ))}
       </ul>
     </div>
   );
