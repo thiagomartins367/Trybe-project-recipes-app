@@ -10,12 +10,38 @@ import Profile from './pages/Profile';
 import Explore from './pages/Explore';
 import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';
+import RecipeInProgress from './pages/recipeInProgress';
+import FoodDetails from './pages/foodDetails';
+import DrinkDetails from './pages/drinkDetails';
+import NotFound from './pages/notFound';
 
 function App() {
   return (
     <main>
       <ContextProvider>
         <Switch>
+          <Route
+            exact
+            path="/foods/:id-receita/in-progress"
+            render={ () => <RecipeInProgress /> }
+          />
+          <Route
+            exact
+            path="/drinks/:id-receita/in-progress"
+            component={ RecipeInProgress }
+          />
+          <Route
+            exact
+            path="/foods/:id-receita"
+            render={ (propsRoute) => (
+              <FoodDetails { ...propsRoute } />) }
+          />
+          <Route
+            exact
+            path="/drinks/:id-receita"
+            render={ (propsRoute) => (
+              <DrinkDetails { ...propsRoute } />) }
+          />
           <Route exact path="/foods" component={ RecipesScreen } />
           <Route exact path="/drinks" component={ RecipesScreen } />
           <Route exact path="/explore" component={ Explore } />
@@ -24,6 +50,7 @@ function App() {
           <Route exact path="/explore/drinks" component={ ExploreDrinks } />
           <Route path="/done-recipes" component={ DoneRecipes } />
           <Route exact path="/" component={ Login } />
+          <Route path="*" component={ NotFound } />
           {/* <Route exact path="/foods/:id-da-receita" component={ } />
           <Route exact path="/drinks/:id-da-receita" component={ } />
           <Route exact path="/foods/:id-da-receita/in-progress" component={ } />
