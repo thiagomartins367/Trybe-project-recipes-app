@@ -22,7 +22,7 @@ const INITIAL_STORAGE_PROGRESS = {
 // }];
 
 function DrinkDetails({ match: { params } }) {
-  const drinkIdDetails = params.slug;
+  const drinkIdDetails = params.idRecipe;
   const {
     drinkDetails,
     setDrinkDetails,

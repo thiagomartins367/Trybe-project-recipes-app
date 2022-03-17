@@ -22,23 +22,23 @@ function App() {
         <Switch>
           <Route
             exact
-            path="/foods/:id-receita/in-progress"
+            path="/foods/:idRecipe/in-progress"
             render={ () => <RecipeInProgress /> }
           />
           <Route
             exact
-            path="/drinks/:id-receita/in-progress"
+            path="/drinks/:idRecipe/in-progress"
             component={ RecipeInProgress }
           />
           <Route
             exact
-            path="/foods/:id-receita"
+            path="/foods/:idRecipe"
             render={ (propsRoute) => (
               <FoodDetails { ...propsRoute } />) }
           />
           <Route
             exact
-            path="/drinks/:id-receita"
+            path="/drinks/:idRecipe"
             render={ (propsRoute) => (
               <DrinkDetails { ...propsRoute } />) }
           />
@@ -51,14 +51,9 @@ function App() {
           <Route path="/done-recipes" component={ DoneRecipes } />
           <Route exact path="/" component={ Login } />
           <Route path="*" component={ NotFound } />
-          {/* <Route exact path="/foods/:id-da-receita" component={ } />
-          <Route exact path="/drinks/:id-da-receita" component={ } />
-          <Route exact path="/foods/:id-da-receita/in-progress" component={ } />
-          <Route exact path="/drinks/:id-da-receita/in-progress" component={ } />
-          <Route exact path="/explore/foods/ingredients" component={ } />
+          {/* <Route exact path="/explore/foods/ingredients" component={ } />
           <Route exact path="/explore/drinks/ingredients" component={ } />
           <Route exact path="/explore/foods/nationalities" component={ } />
-          <Route exact path="/done-recipes" component={ } />
           <Route exact path="/favorite-recipes" component={ }/> */}
         </Switch>
       </ContextProvider>
