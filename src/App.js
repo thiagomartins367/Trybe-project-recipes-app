@@ -54,13 +54,13 @@ function App() {
           <Route exact path="/done-recipes" component={ DoneRecipes } />
           <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
           <Route exact path="/" component={ Login } />
-          <Route path="*" component={ NotFound } />
           <Route exact path="/explore/foods/ingredients" component={ FoodsIngredients } />
           <Route
             exact
             path="/explore/drinks/ingredients"
             component={ DrinksIngredients }
           />
+          <Route path="*" component={ NotFound } />
           {/* <Route exact path="/explore/foods/nationalities" component={ } /> */}
         </Switch>
       </ContextProvider>
