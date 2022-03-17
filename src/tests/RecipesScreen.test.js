@@ -7,7 +7,7 @@ import drinkCategories from '../../cypress/mocks/drinkCategories';
 import mealCategories from '../../cypress/mocks/mealCategories';
 import { meals } from '../../cypress/mocks/meals';
 import App from '../App';
-import { DRINK_RECIPES_URL, FIRST_12_RECIPES, MEAL_RECIPES_URL } from "../constants";
+import { DRINK_RECIPES_URL, FIRST_12_RECIPES, MEAL_RECIPES_URL } from '../constants';
 import renderWithRouter from '../helpers/renderWithRouter';
 import fetchRecipesAPI from '../services/fetchRecipesAPI';
 // import fetchRecipesAPI from '../services/fetchRecipesAPI';
@@ -42,7 +42,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       recipeType = 'drinks';
       requisitionURL = `${DRINK_RECIPES_URL}`;
       break;
-  
+
     default:
       break;
     }
@@ -52,7 +52,9 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     }
     expect(waitForRendering.textContent).toBe(firstRecipeName);
     let recipesImg = [];
-    const recipeTypeFormatted = `${recipeType[0].toUpperCase()}${recipeType.slice(1).replace('s', '')}`;
+    const recipeTypeFormatted = `${recipeType[0].toUpperCase()}${recipeType
+      .slice(1)
+      .replace('s', '')}`;
     await fetchRecipesAPI(requisitionURL).then((data) => recipesImg = data[recipeType]);
     recipesImg.forEach((meal) => {
       // console.log(meal[`str${recipeTypeFormatted}Thumb`]);
@@ -62,7 +64,11 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       expect(recipesImg).toContain(htmlElement.src);
     });
   };
-  const checkRecipesCategoriesFilters = async (getByTestId, mealsCategories, secondCategory ) => {
+  const checkRecipesCategoriesFilters = async (
+    getByTestId,
+    mealsCategories,
+    secondCategory
+  ) => {
     const foodsCategories = [];
     foodsCategories.push('All');
     for (let index = 0; index < 5; index += 1) {
@@ -74,7 +80,12 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       expect(getByTestId(`${category}-category-filter`)).toBeInTheDocument();
     });
   };
-  const checkRecipesFromSelectedCategory = async (getByTestId, firstRecipeName, mockCategoriesImgs, dataTestIdCategoryRecipe) => {
+  const checkRecipesFromSelectedCategory = async (
+    getByTestId,
+    firstRecipeName,
+    mockCategoriesImgs,
+    dataTestIdCategoryRecipe,
+  ) => {
     const waitForRendering = await screen.findByText('Beef');
     expect(waitForRendering.textContent).toBe('Beef');
     userEvent.click(getByTestId(dataTestIdCategoryRecipe));
@@ -102,17 +113,17 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     history.push('/drinks');
     await checkFirst12RecipeCards(getByTestId, 'GG');
   });
-  it('Verifica se todos os 12 cards de receitas na tela "/foods" são refeições', async () => {
+  it('Todos os 12 cards de receitas na tela "/foods" são refeições', async () => {
     const { getByTestId, history } = renderWithRouter(<App />);
     history.push('/foods');
     await checkImageFirst12Recipes(getByTestId, 'Corba', '/foods');
   });
-  it('Verifica se todos os 12 cards de receitas na tela "/drinks" são bebidas', async () => {
+  it('Todos os 12 cards de receitas na tela "/drinks" são bebidas', async () => {
     const { getByTestId, history } = renderWithRouter(<App />);
     history.push('/drinks');
     await checkImageFirst12Recipes(getByTestId, 'GG', '/drinks');
   });
-  it('Verifica se exibe as 5 primeiras categorias de comidas na tela "/foods"', async () => {
+  it('Exibe as 5 primeiras categorias de comidas na tela "/foods"', async () => {
     const { getByTestId, history } = renderWithRouter(<App />);
     history.push('/foods');
     await checkRecipesCategoriesFilters(getByTestId, mealCategories.meals, 'Beef');
@@ -137,7 +148,12 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     beefCategory.forEach((recipeObj) => {
       beefCategoryImg.push(recipeObj.strMealThumb);
     });
-    await checkRecipesFromSelectedCategory(getByTestId, beefCategory[0].strMeal, beefCategoryImg, 'Beef-category-filter');
+    await checkRecipesFromSelectedCategory(
+      getByTestId,
+      beefCategory[0].strMeal,
+      beefCategoryImg,
+      'Beef-category-filter'
+    );
   });
   it('Verifica se são exibidas as comidas corretas quando a categoria "Breakfast" está selecionada.', async () => {
     const { getByTestId, history } = renderWithRouter(<App />);
@@ -147,6 +163,11 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     breakfastCategory.forEach((recipeObj) => {
       breakfastCategoryImg.push(recipeObj.strMealThumb);
     });
-    await checkRecipesFromSelectedCategory(getByTestId, breakfastCategory[0].strMeal, breakfastCategoryImg, 'Breakfast-category-filter');
+    await checkRecipesFromSelectedCategory(
+      getByTestId,
+      breakfastCategory[0].strMeal,
+      breakfastCategoryImg,
+      'Breakfast-category-filter'
+    );
   });
 });
