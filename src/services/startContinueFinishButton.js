@@ -13,10 +13,8 @@ const StartContinueFinishButton = (recipe, recipeType) => {
   const idDrinkInProgress = Object.keys(returnStorage.cocktails);
   const searchDrinkId = idDrinkInProgress.some((id) => idRecipe === id);
   if (searchFoodId || searchDrinkId) {
-    console.log('entrou aqui!!');
     return (<ContinueRecipeButton />);
   }
-  console.log('entrou aqui !!!');
   return (<StartRecipeButton recipe={ recipe } recipeType={ recipeType } />);
 };
 
