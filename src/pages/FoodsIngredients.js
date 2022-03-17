@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import RecipeCard from '../components/recipesScreen/RecipeCard';
 import { CARDS } from '../constants';
+import Context from '../context/Context';
 import { fetchIngredientFood } from '../services/fetchIngredients';
+import { ingredientSearch } from '../services/fetchSearchFilter';
 
 function FoodsIngredients() {
   const [ingredients, setIngredients] = useState([]);
+  const { setFoodsRecipes } = useContext(Context);
+  const history = useHistory();
 
   const getIngredients = async () => {
     const response = await fetchIngredientFood();
     const data = response.slice(0, CARDS);
     setIngredients(data);
+  };
+
+  const searchRecipe = async (ingredient) => {
+    const getRecipe = await ingredientSearch(ingredient);
+    setFoodsRecipes(getRecipe.meals);
+    console.log(getRecipe);
+    history.pushState('/foods');
   };
 
   useEffect(() => {
@@ -21,18 +32,22 @@ function FoodsIngredients() {
     <div>
       <h1>Explore Foods Ingredients</h1>
       {ingredients.map((ingredient, index) => (
-        <div key={ index } data-testid={ `${index}-ingredient-card` }>
-          <Link to="/foods">
-            <RecipeCard
-              dataTestIdRecipeCard={ `${index}-recipe-card` }
-              dataTestIdRecipeImg={ `${index}-card-img` }
-              dataTestIdRecipeName={ `${index}-card-name` }
-              recipeImage={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
-              recipeName={ ingredient.strIngredient }
-            />
-          </Link>
+        <button
+          type="button"
+          key={ index }
+          data-testid={ `${index}-ingredient-card` }
+          onClick={ () => { searchRecipe(ingredient.strIngredient); } }
+        >
+          <RecipeCard
+            dataTestIdRecipeCard={ `${index}-recipe-card` }
+            dataTestIdRecipeImg={ `${index}-card-img` }
+            dataTestIdRecipeName={ `${index}-card-name` }
+            recipeImage={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
+            recipeName={ ingredient.strIngredient }
 
-        </div>
+          />
+
+        </button>
       ))}
     </div>
   );
