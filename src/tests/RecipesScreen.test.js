@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import beefMeals from '../../cypress/mocks/beefMeals';
+import breakfastMeals from '../../cypress/mocks/breakfastMeals';
 import drinkCategories from '../../cypress/mocks/drinkCategories';
 import mealCategories from '../../cypress/mocks/mealCategories';
 import { meals } from '../../cypress/mocks/meals';
@@ -81,7 +82,11 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     expect(waitForRenderingRecipes.textContent).toBe(firstRecipeName);
     const categoryRecipesImg = [];
     for (let index = 0; index < FIRST_12_RECIPES; index += 1) {
-      categoryRecipesImg.push(getByTestId(`${index}-card-img`));
+      try {
+        categoryRecipesImg.push(getByTestId(`${index}-card-img`));
+      } catch (error) {
+        break;
+      }
     }
     categoryRecipesImg.forEach((htmlElement) => {
       expect(mockCategoriesImgs).toContain(htmlElement.src);
@@ -134,13 +139,14 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     });
     await checkRecipesFromSelectedCategory(getByTestId, beefCategory[0].strMeal, beefCategoryImg, 'Beef-category-filter');
   });
-  it('Verifica se são exibidas as comidas corretas quando a categoria "Beef" está selecionada.', async () => {
+  it('Verifica se são exibidas as comidas corretas quando a categoria "Breakfast" está selecionada.', async () => {
     const { getByTestId, history } = renderWithRouter(<App />);
     history.push('/foods');
-    const beefCategoryImg = [];
-    beefMeals.meals.forEach((recipeObj) => {
-      beefCategoryImg.push(recipeObj.strMealThumb);
+    const breakfastCategory = [...breakfastMeals.meals];
+    const breakfastCategoryImg = [];
+    breakfastCategory.forEach((recipeObj) => {
+      breakfastCategoryImg.push(recipeObj.strMealThumb);
     });
-    await checkRecipesFromSelectedCategory(getByTestId, beefCategory[0].strMeal, beefCategoryImg, 'Beef-category-filter');
+    await checkRecipesFromSelectedCategory(getByTestId, breakfastCategory[0].strMeal, breakfastCategoryImg, 'Breakfast-category-filter');
   });
 });
