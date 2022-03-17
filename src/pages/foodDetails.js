@@ -4,7 +4,8 @@ import RecipeDetails from '../components/recipesDetails/recipeDetails';
 import Context from '../context/Context';
 import fetchRecipesAPI from '../services/fetchRecipesAPI';
 import RecomentationRecipe from '../components/recipesDetails/recomendationRecipe';
-import StartContinueFinishButton from '../services/startContinueFinishButton';
+import StartContinueFinishButton from
+'../components/recipesDetails/startContinueFinishButton';
 
 const INITIAL_STORAGE_PROGRESS = {
   meals: {},

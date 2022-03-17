@@ -1,6 +1,6 @@
 import React from 'react';
-import StartRecipeButton from '../components/recipesDetails/startRecipeButton';
-import ContinueRecipeButton from '../components/recipesDetails/continueRecipeButton';
+import StartRecipeButton from './startRecipeButton';
+import ContinueRecipeButton from './continueRecipeButton';
 
 const StartContinueFinishButton = (recipe, recipeType) => {
   const [recipeDesctructuring] = [...recipe];
