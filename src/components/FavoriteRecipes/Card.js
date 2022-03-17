@@ -52,6 +52,15 @@ function Card({
         onClick={ () => {
           const elementoPai = document.getElementById(id);
           elementoPai.parentNode.removeChild(elementoPai);
+          const getRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'))
+            || JSON.parse(localStorage.getItem('setFavoritesRecipes'));
+          if (getRecipes.length > 1) {
+            const newFavorite = getRecipes.filter((value) => value.id !== id);
+            console.log(newFavorite);
+            localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorite));
+          } else {
+            localStorage.setItem('favoriteRecipes', '[]');
+          }
         } }
       >
         Desfavoritar
