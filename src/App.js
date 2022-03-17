@@ -22,23 +22,23 @@ function App() {
         <Switch>
           <Route
             exact
-            path="/foods/:id-receita/in-progress"
+            path="/foods/:idRecipe/in-progress"
             render={ () => <RecipeInProgress /> }
           />
           <Route
             exact
-            path="/drinks/:id-receita/in-progress"
+            path="/drinks/:idRecipe/in-progress"
             component={ RecipeInProgress }
           />
           <Route
             exact
-            path="/foods/:id-receita"
+            path="/foods/:idRecipe"
             render={ (propsRoute) => (
               <FoodDetails { ...propsRoute } />) }
           />
           <Route
             exact
-            path="/drinks/:id-receita"
+            path="/drinks/:idRecipe"
             render={ (propsRoute) => (
               <DrinkDetails { ...propsRoute } />) }
           />

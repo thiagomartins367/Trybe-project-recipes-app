@@ -11,18 +11,8 @@ const INITIAL_STORAGE_PROGRESS = {
   cocktails: {},
 };
 
-// const INITIAL_STORAGE_FAVOTIRE = [{
-//   id: '',
-//   type: '',
-//   nationality: '',
-//   category: '',
-//   alcoholicOrNot: '',
-//   name: '',
-//   image: '',
-// }];
-
 function DrinkDetails({ match: { params } }) {
-  const drinkIdDetails = params.slug;
+  const drinkIdDetails = params.idRecipe;
   const {
     drinkDetails,
     setDrinkDetails,

@@ -12,7 +12,7 @@ const INITIAL_STORAGE_PROGRESS = {
 };
 
 function FoodDetails({ match: { params } }) {
-  const foodIdDetails = params.slug;
+  const foodIdDetails = params.idRecipe;
   const {
     foodDetails,
     setfoodDetails,
