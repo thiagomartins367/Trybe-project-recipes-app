@@ -12,11 +12,22 @@ import {
   searchLatterSearchDrink,
 } from '../../services/fetchSearchFilter';
 
+const consultRedurect = (editableStateRecipesData, historyData, pathNameData) => {
+  if (editableStateRecipesData.length === 1 && pathNameData === 'foods/') {
+    historyData.push(`/${pathNameData}${editableStateRecipesData[0].idMeal}`);
+  } else if (editableStateRecipesData.length === 1 && pathNameData === 'drinks/') {
+    historyData.push(`/${pathNameData}${editableStateRecipesData[0].idDrink}`);
+  }
+};
+
 export default function Header() {
   const [searchBarEnable, setSearchBarEnable] = useState(false);
   const [search, setSearch] = useState('');
   const [radio, setRadio] = useState('');
-  const { setEditableStateRecipes, setActiveFilter } = useContext(Context);
+  const { setEditableStateRecipes,
+    setActiveFilter,
+    // editableStateRecipes,
+  } = useContext(Context);
   const history = useHistory();
   const { location: { pathname } } = history;
   const pathName = `${pathname.replace('/', '')}/`;
@@ -37,6 +48,7 @@ export default function Header() {
   const onChangeRadio = ({ target: { value } }) => {
     setRadio(value);
   };
+
   const ingredient = pathName === 'foods/' ? ingredientSearch : ingredientSearchDrink;
   const name = pathName === 'foods/' ? nameLatterSearch : nameLatterSearchDrink;
   const latter = pathName === 'foods/' ? searchLatterSearch : searchLatterSearchDrink;
@@ -46,6 +58,7 @@ export default function Header() {
       ingredient(search)
         .then((response) => {
           setEditableStateRecipes(response);
+          consultRedurect(response, history, pathName);
         });
       setActiveFilter('');
       break;
@@ -53,6 +66,7 @@ export default function Header() {
       name(search)
         .then((response) => {
           setEditableStateRecipes(response);
+          consultRedurect(response, history, pathName);
         });
       setActiveFilter('');
       break;
@@ -60,6 +74,7 @@ export default function Header() {
       latter(search)
         .then((response) => {
           setEditableStateRecipes(response);
+          consultRedurect(response, history, pathName);
         });
       setActiveFilter('');
       if (search.length > 1) {
