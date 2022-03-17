@@ -37,10 +37,10 @@ export default function Header() {
   const onChangeRadio = ({ target: { value } }) => {
     setRadio(value);
   };
+  const ingredient = pathName === 'foods/' ? ingredientSearch : ingredientSearchDrink;
+  const name = pathName === 'foods/' ? nameLatterSearch : nameLatterSearchDrink;
+  const latter = pathName === 'foods/' ? searchLatterSearch : searchLatterSearchDrink;
   const handleClickSearchInput = () => {
-    const ingredient = pathName === 'foods/' ? ingredientSearch : ingredientSearchDrink;
-    const name = pathName === 'foods/' ? nameLatterSearch : nameLatterSearchDrink;
-    const latter = pathName === 'foods/' ? searchLatterSearch : searchLatterSearchDrink;
     switch (radio) {
     case 'ingredient':
       ingredient(search)
