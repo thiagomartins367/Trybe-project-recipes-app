@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BottomMenu from '../components/BottomMenu';
-import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 import RecipeCard from '../components/recipesScreen/RecipeCard';
 import { CARDS } from '../constants';
 import { fetchIngredientDrink } from '../services/fetchIngredients';
@@ -20,10 +19,10 @@ function DrinksIngredients() {
 
   return (
     <div>
-      <Header />
+      <h1>Explore Drinks Ingredients</h1>
       {ingredients.map((ingredient, index) => (
         <div key={ index } data-testid={ `${index}-ingredient-card` }>
-          <a href="/drinks" data-testid={ `${index}-ingredient-card` }>
+          <Link to="/drinks">
             <RecipeCard
               dataTestIdRecipeCard={ `${index}-recipe-card` }
               dataTestIdRecipeImg={ `${index}-card-img` }
@@ -31,21 +30,9 @@ function DrinksIngredients() {
               recipeImage={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
               recipeName={ ingredient.strIngredient1 }
             />
-          </a>
+          </Link>
         </div>
-
-        // <div className="recipe-card" key={ index }>
-        //   <a href="/drinks" data-testid={ `${index}-ingredient-card` }>
-        //     <img
-        //       data-testid={ `${index}-card-img` }
-        //       src={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
-        //       alt={ ingredient.strIngredient1 }
-        //     />
-        //     <p data-testid={ `${index}-card-name` }>{ingredient.strIngredient1}</p>
-        //   </a>
-        // </div>
       ))}
-      <BottomMenu />
     </div>
   );
 }

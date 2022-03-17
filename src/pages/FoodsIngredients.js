@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import BottomMenu from '../components/BottomMenu';
-import Header from '../components/Header';
 import RecipeCard from '../components/recipesScreen/RecipeCard';
 import { CARDS } from '../constants';
 import { fetchIngredientFood } from '../services/fetchIngredients';
@@ -21,7 +19,7 @@ function FoodsIngredients() {
 
   return (
     <div>
-      <Header />
+      <h1>Explore Foods Ingredients</h1>
       {ingredients.map((ingredient, index) => (
         <div key={ index } data-testid={ `${index}-ingredient-card` }>
           <Link to="/foods">
@@ -35,19 +33,7 @@ function FoodsIngredients() {
           </Link>
 
         </div>
-
-        // <div className="recipe-card" key={ index }>
-        //   <a href="/foods" data-testid={ `${index}-ingredient-card` }>
-        //     <img
-        //       data-testid={ `${index}-card-img` }
-        //       src={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
-        //       alt={ ingredient.strIngredient }
-        //     />
-        //     <p data-testid={ `${index}-card-name` }>{ingredient.strIngredient}</p>
-        //   </a>
-        // </div>
       ))}
-      <BottomMenu />
     </div>
   );
 }
