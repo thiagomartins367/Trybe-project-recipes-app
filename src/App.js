@@ -24,12 +24,16 @@ function App() {
           <Route
             exact
             path="/foods/:idRecipe/in-progress"
-            render={ () => <RecipeInProgress /> }
+            render={
+              (propsRoute) => <RecipeInProgress { ...propsRoute } recipeType="food" />
+            }
           />
           <Route
             exact
             path="/drinks/:idRecipe/in-progress"
-            component={ RecipeInProgress }
+            component={
+              (propsRoute) => <RecipeInProgress { ...propsRoute } recipeType="drink" />
+            }
           />
           <Route
             exact

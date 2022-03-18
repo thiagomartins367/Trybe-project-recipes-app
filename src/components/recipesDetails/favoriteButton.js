@@ -1,30 +1,28 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
-import Context from '../../context/Context';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
-function FavoriteButton({ recipe }) {
-  const {
-    favorite,
-    setFavorite,
-  } = useContext(Context);
-
-  const verifyFavorite = () => {
-    const returnStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+const verifyFavorite = (recipe) => {
+  const returnStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  if (returnStorage) {
     const idRecipe = recipe.idMeal || recipe.idDrink;
     const searchIdFavorite = returnStorage.some(({ id }) => id === idRecipe);
     return searchIdFavorite;
-  };
+  }
+  return false;
+};
+
+function FavoriteButton({ recipe }) {
+  const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
-    setFavorite(verifyFavorite());
+    setFavorite(verifyFavorite(recipe));
   }, []);
 
   const addFavoriteRecipeBtn = () => {
-    console.log(recipe);
     const idRecipe = recipe.idMeal || recipe.idDrink;
-    const returnStorage = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const returnStorage = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
     if (favorite) {
       // retira dos favoritos
       const filterIdfavorite = returnStorage.filter(({ id }) => id !== idRecipe);
@@ -55,7 +53,7 @@ function FavoriteButton({ recipe }) {
       <img
         data-testid="favorite-btn"
         src={ favorite ? blackHeartIcon : whiteHeartIcon }
-        alt="FavoriteButton"
+        alt="favorite-btn"
       />
     </button>
   );

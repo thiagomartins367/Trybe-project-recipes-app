@@ -5,7 +5,7 @@ const RecipeDetailsContext = () => {
   const [drinkDetails, setDrinkDetails] = useState({});
   const [allFoodRecipes, setAllFoodRecipes] = useState({});
   const [allDrinkRecipes, setAllDrinkRecipes] = useState({});
-  const [favorite, setFavorite] = useState();
+  // const [favorite, setFavorite] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
 
   const recipeDetailsContext = {
@@ -17,8 +17,8 @@ const RecipeDetailsContext = () => {
     setAllFoodRecipes,
     allDrinkRecipes,
     setAllDrinkRecipes,
-    favorite,
-    setFavorite,
+    // favorite,
+    // setFavorite,
     linkCopied,
     setLinkCopied,
   };

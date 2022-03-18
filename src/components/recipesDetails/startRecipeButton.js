@@ -31,7 +31,7 @@ function StartRecipeButton({ recipe, recipeType }) {
       style={ { position: 'fixed', bottom: 0 } }
       onClick={ () => redirectRecipeProgress() }
     >
-      Iniciar Receita
+      Start Recipe
     </button>
   );
 }

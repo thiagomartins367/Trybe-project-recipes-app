@@ -27,7 +27,6 @@ function FoodDetails({ match: { params } }) {
     const returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (returnStorage === null) {
       localStorage.setItem('inProgressRecipes', JSON.stringify(INITIAL_STORAGE_PROGRESS));
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
     }
   }, []);
 
@@ -38,7 +37,7 @@ function FoodDetails({ match: { params } }) {
   return (
     <div>
       {meals && meals.map((food) => (
-        <RecipeDetails key={ food.idMeal } recipe={ food } />
+        <RecipeDetails key={ food.idMeal } recipe={ food } page="details" />
       )) }
       <RecomentationRecipe
         urlRecipesApi={ urlDrinkRecipes }
