@@ -8,7 +8,7 @@ import { ingredientSearch } from '../services/fetchSearchFilter';
 
 function FoodsIngredients() {
   const [ingredients, setIngredients] = useState([]);
-  const { setEditableStateRecipes } = useContext(Context);
+  const { setEditableStateRecipes, setActiveFilter } = useContext(Context);
   const history = useHistory();
 
   const getIngredients = async () => {
@@ -18,9 +18,10 @@ function FoodsIngredients() {
   };
 
   const searchRecipe = async (ingredient) => {
-    const getRecipe = await ingredientSearch(ingredient);
+    const response = await ingredientSearch(ingredient);
+    const getRecipe = response.slice(0, CARDS);
     setEditableStateRecipes(getRecipe);
-    console.log(getRecipe);
+    setActiveFilter('');
     history.push('/foods');
   };
 
@@ -32,22 +33,26 @@ function FoodsIngredients() {
     <div>
       <h1>Explore Foods Ingredients</h1>
       {ingredients.map((ingredient, index) => (
-        <button
-          type="button"
-          key={ index }
-          data-testid={ `${index}-ingredient-card` }
-          onClick={ () => { searchRecipe(ingredient.strIngredient); } }
-        >
-          <RecipeCard
-            dataTestIdRecipeCard={ `${index}-recipe-card` }
-            dataTestIdRecipeImg={ `${index}-card-img` }
-            dataTestIdRecipeName={ `${index}-card-name` }
-            recipeImage={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
-            recipeName={ ingredient.strIngredient }
+        <div key={ index } data-testid={ `${index}-ingredient-card` }>
+          <button
+            className="noStyleBtn"
+            type="button"
+            onClick={ () => {
+              searchRecipe(ingredient.strIngredient);
+            } }
 
-          />
+          >
+            <RecipeCard
+              dataTestIdRecipeCard={ `${index}-recipe-card` }
+              dataTestIdRecipeImg={ `${index}-card-img` }
+              dataTestIdRecipeName={ `${index}-card-name` }
+              recipeImage={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
+              recipeName={ ingredient.strIngredient }
 
-        </button>
+            />
+
+          </button>
+        </div>
       ))}
     </div>
   );

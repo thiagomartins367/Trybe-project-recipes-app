@@ -128,6 +128,11 @@ footer section {
   max-height: 80vh;
 }
 
+.noStyleBtn {
+  border: none;
+  background-color: white;
+}
+
 /*
 #iceLeft {
   animation: clink .8s infinite ease;
