@@ -8,3 +8,12 @@ export const URL_FOOD_RANDOM = 'https://www.themealdb.com/api/json/v1/1/random.p
 export const MIN_LENGTH_LOGIN = 6;
 export const ORDINARY_DRINK = 'Ordinary Drink';
 export const FIRST_5_CATEGORIES = 5;
+export const URL_FOOD_INGREDIENTS = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+export const CARDS = 12;
+export const URL_DRINK_INGREDIENTS = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+export const INGREDIENT_SEARCH_FILTER = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
+export const NAME_SEARCH_FILTER = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
+export const SEARCH_LATTER_SEARCH_FILTER = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
+export const INGREDIENT_SEARCH_FILTER_DRINK = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
+export const NAME_SEARCH_FILTER_DRINK = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+export const SEARCH_LATTER_SEARCH_FILTER_DRINK = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
