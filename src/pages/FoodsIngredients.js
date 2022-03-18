@@ -8,7 +8,7 @@ import { ingredientSearch } from '../services/fetchSearchFilter';
 
 function FoodsIngredients() {
   const [ingredients, setIngredients] = useState([]);
-  const { setEditableStateRecipes } = useContext(Context);
+  const { setEditableStateRecipes, setActiveFilter } = useContext(Context);
   const history = useHistory();
 
   const getIngredients = async () => {
@@ -19,7 +19,8 @@ function FoodsIngredients() {
 
   const searchRecipe = async (ingredient) => {
     const getRecipe = await ingredientSearch(ingredient);
-    setEditableStateRecipes(getRecipe.meals);
+    setEditableStateRecipes(getRecipe);
+    setActiveFilter('');
     console.log(getRecipe);
     history.push('/foods');
   };
