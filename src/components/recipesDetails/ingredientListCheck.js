@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import IngredientOrganization from '../../services/ingredientOrganization';
+import Context from '../../context/Context';
 
 const addFirstStorage = (recipe, ingredient, recipeType) => {
   if (recipeType === 'food') {
@@ -28,19 +29,25 @@ const addIngredientStorage = (recipe, ingredient, recipeType, returnStorage) => 
   }
 };
 
-const verifyCheckedItem = (ingredient, ingredients, setIngredients) => {
+const verifyCheckedItem = (ingredient, ingredients, setIngredients, setFinishRecipe) => {
   const verifyChecked = ingredients.map((item) => {
     if (item.ingredient === ingredient) {
       item.checked = !item.checked;
     }
     return item;
   });
+  const verifyFinish = ingredients.some((item) => item.checked !== true);
+  if (!verifyFinish) {
+    // console.log('finish');
+    setFinishRecipe(false);
+  }
   setIngredients(verifyChecked);
   localStorage.setItem('ingredients', JSON.stringify(verifyChecked));
 };
 
 function IngredientListCheck({ recipe, recipeType }) {
   const [ingredients, setIngredients] = useState();
+  const { setFinishRecipe } = useContext(Context);
   const arrIngredient = IngredientOrganization(recipe);
   useEffect(() => {
     const returnIngredients = JSON.parse(localStorage.getItem('ingredients'));
@@ -56,10 +63,10 @@ function IngredientListCheck({ recipe, recipeType }) {
     const returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (returnStorage) {
       addIngredientStorage(recipe, ingredient, recipeType, returnStorage);
-      verifyCheckedItem(ingredient, ingredients, setIngredients);
+      verifyCheckedItem(ingredient, ingredients, setIngredients, setFinishRecipe);
     } else {
       addFirstStorage(recipe, ingredient, recipeType);
-      verifyCheckedItem(ingredient, ingredients, setIngredients);
+      verifyCheckedItem(ingredient, ingredients, setIngredients, setFinishRecipe);
     }
   };
 
