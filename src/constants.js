@@ -6,3 +6,5 @@ export const DRINK_RECIPES_CATEGORIES_URL = 'https://www.thecocktaildb.com/api/j
 export const URL_DRINK_RANDOM = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 export const URL_FOOD_RANDOM = 'https://www.themealdb.com/api/json/v1/1/random.php';
 export const MIN_LENGTH_LOGIN = 6;
+export const ORDINARY_DRINK = 'Ordinary Drink';
+export const FIRST_5_CATEGORIES = 5;

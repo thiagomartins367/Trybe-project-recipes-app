@@ -8,6 +8,7 @@ import cocktailDrinks from '../../cypress/mocks/cocktailDrinks';
 import cocoaDrinks from '../../cypress/mocks/cocoaDrinks';
 import dessertMeals from '../../cypress/mocks/dessertMeals';
 import drinkCategories from '../../cypress/mocks/drinkCategories';
+import drinks from '../../cypress/mocks/drinks';
 import goatMeals from '../../cypress/mocks/goatMeals';
 import mealCategories from '../../cypress/mocks/mealCategories';
 import { meals } from '../../cypress/mocks/meals';
@@ -15,10 +16,15 @@ import milkDrinks from '../../cypress/mocks/milkDrinks';
 import ordinaryDrinks from '../../cypress/mocks/ordinaryDrinks';
 import otherDrinks from '../../cypress/mocks/otherDrinks';
 import App from '../App';
-import { DRINK_RECIPES_URL, FIRST_12_RECIPES, MEAL_RECIPES_URL } from '../constants';
+import {
+  DRINK_RECIPES_URL,
+  FIRST_12_RECIPES,
+  FIRST_5_CATEGORIES,
+  MEAL_RECIPES_URL,
+  ORDINARY_DRINK,
+} from '../constants';
 import renderWithRouter from '../helpers/renderWithRouter';
 import fetchRecipesAPI from '../services/fetchRecipesAPI';
-import drinksMock from './recipesScreenTests/drinksMock';
 import mealsMock from './recipesScreenTests/mealsMock';
 // import fetchRecipesAPI from '../services/fetchRecipesAPI';
 
@@ -64,7 +70,9 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     const recipeTypeFormatted = `${recipeType[0].toUpperCase()}${recipeType
       .slice(1)
       .replace('s', '')}`;
-    await fetchRecipesAPI(requisitionURL).then((data) => recipesImg = data[recipeType]);
+    await fetchRecipesAPI(requisitionURL).then((data) => {
+      recipesImg = data[recipeType];
+    });
     recipesImg.forEach((meal) => {
       recipesImg.push(meal[`str${recipeTypeFormatted}Thumb`]);
     });
@@ -79,7 +87,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
   ) => {
     const foodsCategories = [];
     foodsCategories.push('All');
-    for (let index = 0; index < 5; index += 1) {
+    for (let index = 0; index < FIRST_5_CATEGORIES; index += 1) {
       foodsCategories.push(mealsCategories[index].strCategory);
     }
     const waitForRendering = await screen.findByText(secondCategory);
@@ -154,7 +162,11 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     for (let index = 0; index < FIRST_12_RECIPES; index += 1) {
       userEvent.click(getByTestId(`${index}-recipe-card`));
       const { location: { pathname } } = history;
-      expect(pathname).toBe(`${page}/${recipesMock[index][`id${typeRecipes}`]}`);
+      const idRecipe = pathname.replace(`${page}/`, '');
+      const recipe = recipesMock.find(
+        (element) => element[`id${typeRecipes}`] === idRecipe,
+      );
+      expect(pathname).toBe(`${page}/${recipe[`id${typeRecipes}`]}`);
       history.push(page);
     }
   };
@@ -188,7 +200,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     history.push('/drinks');
     const drinksCategories = [...drinkCategories.drinks];
     drinksCategories[2] = { strCategory: 'Shake' };
-    await checkRecipesCategoriesFilters(getByTestId, drinksCategories, 'Ordinary Drink');
+    await checkRecipesCategoriesFilters(getByTestId, drinksCategories, ORDINARY_DRINK);
   });
   it('Exibe as refeições da categoria "Beef" quando selecionada.', async () => {
     const renderComponent = renderWithRouter(<App />);
@@ -240,7 +252,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     recipesCategory.push({
       strMeal: 'Ayam Percik',
       strMealThumb: 'https://www.themealdb.com/images/media/meals/020z181619788503.jpg',
-      idMeal: '53050'
+      idMeal: '53050',
     });
     recipesCategory.forEach((recipeObj) => {
       recipesCategoryImg.push(recipeObj.strMealThumb);
@@ -263,7 +275,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
     recipesCategory.push({
       strMeal: 'Apam balik',
       strMealThumb: 'https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg',
-      idMeal: '53049'
+      idMeal: '53049',
     });
     recipesCategory.forEach((recipeObj) => {
       recipesCategoryImg.push(recipeObj.strMealThumb);
@@ -308,7 +320,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       renderComponent,
       firstRecipeNameCategory: recipesCategory[0].strDrink,
       firstRecipeName: 'GG',
-      secondCategory: 'Ordinary Drink',
+      secondCategory: ORDINARY_DRINK,
       mockCategoriesImgs: recipesCategoryImg,
       dataTestIdCategoryRecipe: 'Ordinary Drink-category-filter',
       page: '/drinks',
@@ -326,7 +338,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       renderComponent,
       firstRecipeNameCategory: recipesCategory[1].strDrink,
       firstRecipeName: 'GG',
-      secondCategory: 'Ordinary Drink',
+      secondCategory: ORDINARY_DRINK,
       mockCategoriesImgs: recipesCategoryImg,
       dataTestIdCategoryRecipe: 'Cocktail-category-filter',
       page: '/drinks',
@@ -344,7 +356,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       renderComponent,
       firstRecipeNameCategory: recipesCategory[1].strDrink,
       firstRecipeName: 'GG',
-      secondCategory: 'Ordinary Drink',
+      secondCategory: ORDINARY_DRINK,
       mockCategoriesImgs: recipesCategoryImg,
       dataTestIdCategoryRecipe: 'Shake-category-filter',
       page: '/drinks',
@@ -362,7 +374,7 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       renderComponent,
       firstRecipeNameCategory: recipesCategory[1].strDrink,
       firstRecipeName: 'GG',
-      secondCategory: 'Ordinary Drink',
+      secondCategory: ORDINARY_DRINK,
       mockCategoriesImgs: recipesCategoryImg,
       dataTestIdCategoryRecipe: 'Other/Unknown-category-filter',
       page: '/drinks',
@@ -380,14 +392,16 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       renderComponent,
       firstRecipeNameCategory: recipesCategory[1].strDrink,
       firstRecipeName: 'GG',
-      secondCategory: 'Ordinary Drink',
+      secondCategory: ORDINARY_DRINK,
       mockCategoriesImgs: recipesCategoryImg,
       dataTestIdCategoryRecipe: 'Cocoa-category-filter',
       page: '/drinks',
     };
     await checkRecipesFromSelectedCategory(functionParameters);
   });
-  it('Exibe as 12 refeições inicias quando a categoria "All" é selecionada na tela "/foods".', async () => {
+  it(`${
+    'Exibe as 12 refeições inicias quando a categoria "All"'
+  } ${'é selecionada na tela "/foods".'}`, async () => {
     const renderComponent = renderWithRouter(<App />);
     const functionParameters = {
       renderComponent,
@@ -397,10 +411,12 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       categoryAllDataTestId: 'All-category-filter',
       firstRecipeName: mealCategories.meals[0].strCategory,
       page: '/foods',
-    }
+    };
     await checkRecipesFromTheAllCategory(functionParameters);
   });
-  it('Exibe as 12 refeições inicias quando a categoria "All" é selecionada na tela "/drinks".', async () => {
+  it(`${
+    'Exibe as 12 refeições inicias quando a categoria "All"'
+  } ${'é selecionada na tela "/drinks".'}`, async () => {
     const renderComponent = renderWithRouter(<App />);
     const functionParameters = {
       renderComponent,
@@ -410,29 +426,34 @@ describe('Testes da Página "RecipesScreen" (Tela Principal de Receitas)', () =>
       categoryAllDataTestId: 'All-category-filter',
       firstRecipeName: drinkCategories.drinks[0].strCategory,
       page: '/drinks',
-    }
+    };
     await checkRecipesFromTheAllCategory(functionParameters);
   });
-  it('A rota muda para a tela de detalhes da receita clicada na tela "/foods".', async () => {
+  it(`${
+    'A rota muda para a tela de detalhes da receita clicada'
+  } ${'na tela "/foods".'}`, async () => {
     const renderComponent = renderWithRouter(<App />);
+    const mockMeals = [...meals, ...mealsMock];
     const functionParameters = {
       renderComponent,
-      firstRecipeName: mealsMock[0].strMeal,
+      firstRecipeName: mockMeals[0].strMeal,
       page: '/foods',
-      recipesMock: mealsMock,
+      recipesMock: mockMeals,
       typeRecipes: 'Meal',
-    }
+    };
     await checkRedirectRecipeDetailsScreen(functionParameters);
   });
-  it('A rota muda para a tela de detalhes da receita clicada na tela "/drinks".', async () => {
+  it(`${
+    'A rota muda para a tela de detalhes da receita clicada'
+  } ${'na tela "/drinks".'}`, async () => {
     const renderComponent = renderWithRouter(<App />);
     const functionParameters = {
       renderComponent,
-      firstRecipeName: drinksMock[0].strDrink,
+      firstRecipeName: drinks.drinks[0].strDrink,
       page: '/drinks',
-      recipesMock: drinksMock,
+      recipesMock: drinks.drinks,
       typeRecipes: 'Drink',
-    }
+    };
     await checkRedirectRecipeDetailsScreen(functionParameters);
   });
 });
