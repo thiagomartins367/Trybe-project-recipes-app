@@ -20,13 +20,21 @@ const consultRedurect = (editableStateRecipesData, historyData, pathNameData) =>
   }
 };
 
+const alertRequest = (response, history, setEditableStateRecipes, pathName) => {
+  if (response === null) {
+    global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    history.push('/');
+  }
+  setEditableStateRecipes(response);
+  consultRedurect(response, history, pathName);
+};
+
 export default function Header() {
   const [searchBarEnable, setSearchBarEnable] = useState(false);
   const [search, setSearch] = useState('');
   const [radio, setRadio] = useState('');
   const { setEditableStateRecipes,
     setActiveFilter,
-    // editableStateRecipes,
   } = useContext(Context);
   const history = useHistory();
   const { location: { pathname } } = history;
@@ -57,24 +65,21 @@ export default function Header() {
     case 'ingredient':
       ingredient(search)
         .then((response) => {
-          setEditableStateRecipes(response);
-          consultRedurect(response, history, pathName);
+          alertRequest(response, history, setEditableStateRecipes, pathName);
         });
       setActiveFilter('');
       break;
     case 'name':
       name(search)
         .then((response) => {
-          setEditableStateRecipes(response);
-          consultRedurect(response, history, pathName);
+          alertRequest(response, history, setEditableStateRecipes, pathName);
         });
       setActiveFilter('');
       break;
     case 'fist-letter':
       latter(search)
         .then((response) => {
-          setEditableStateRecipes(response);
-          consultRedurect(response, history, pathName);
+          alertRequest(response, history, setEditableStateRecipes, pathName);
         });
       setActiveFilter('');
       if (search.length > 1) {
