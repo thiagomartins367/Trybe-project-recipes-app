@@ -77,7 +77,7 @@ const RecipesScreen = ({ match: { path } }) => {
     <section>
       <Header />
       <section className="section-filters-recipes">
-        {recipesCategories.map((category) => (
+        {recipesCategories && recipesCategories.map((category) => (
           <button
             key={ category }
             type="button"
@@ -92,7 +92,7 @@ const RecipesScreen = ({ match: { path } }) => {
         ))}
       </section>
       <section className="meals">
-        {editableStateRecipes.map((element, index) => (
+        {recipesCategories && editableStateRecipes.map((element, index) => (
           <Link
             to={ `${path}/${element[`id${typeOfRecipes}`]}` }
             key={ `${index}-${element[`str${typeOfRecipes}`]}` }
