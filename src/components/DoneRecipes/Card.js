@@ -54,7 +54,7 @@ function Card({
       >
         Compartilhar
       </button>
-      { copy && <p>Link copied!</p>}
+      { copy && <p data-testid="URL-copiada">Link copied!</p>}
     </li>
   );
 }
