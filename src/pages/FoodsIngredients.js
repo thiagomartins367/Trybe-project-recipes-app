@@ -19,7 +19,7 @@ function FoodsIngredients() {
 
   const searchRecipe = async (ingredient) => {
     const getRecipe = await ingredientSearch(ingredient);
-    setEditableStateRecipes(getRecipe.meals);
+    setEditableStateRecipes(getRecipe);
     console.log(getRecipe);
     history.push('/foods');
   };
