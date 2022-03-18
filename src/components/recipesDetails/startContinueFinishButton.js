@@ -5,40 +5,33 @@ import FinishButton from './finishButton';
 
 const verifyProgress = (recipe, recipeType) => {
   const returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (!returnStorage) {
+    return <StartRecipeButton recipe={ recipe } recipeType={ recipeType } />;
+  }
   const [recipeDesctructuring] = [...recipe];
-  if (returnStorage) {
-    if (recipeType === 'food') {
-      const { idMeal } = recipeDesctructuring;
-      const idFoodInProgress = Object.keys(returnStorage.meals);
-      const searchFoodId = idFoodInProgress.some((id) => idMeal === id);
-      return searchFoodId;
-    }
-    const { idDrink } = recipeDesctructuring;
-    const idDrinkInProgress = Object.keys(returnStorage.cocktails);
-    const searchDrinkId = idDrinkInProgress.some((id) => idDrink === id);
-    return searchDrinkId;
+  if (recipeType === 'food') {
+    const { idMeal } = recipeDesctructuring;
+    const idFoodInProgress = Object.keys(returnStorage.meals);
+    const searchFoodId = idFoodInProgress.some((id) => idMeal === id);
+    if (searchFoodId) {
+      return (<ContinueRecipeButton recipe={ recipe } recipeType={ recipeType } />);
+    } return (<StartRecipeButton recipe={ recipe } recipeType={ recipeType } />);
   }
-  return false;
-};
-
-const verifyDone = () => {
-  const returnStorage = JSON.parse(localStorage.getItem('DoneRecipes'));
-  if (returnStorage) {
-    const idRecipeInProgress = Object.keys(returnStorage[mealsOrCook]);
-    const searcRecipeId = idRecipeInProgress.some((id) => idRecipe === id);
-    return searcRecipeId;
-  }
-  return false;
-};
-
-const StartContinueFinishButton = (recipe, recipeType) => {
-  if (verifyProgress(recipe, recipeType)) {
+  const { idDrink } = recipeDesctructuring;
+  const idDrinkInProgress = Object.keys(returnStorage.cocktails);
+  const searchDrinkId = idDrinkInProgress.some((id) => idDrink === id);
+  if (searchDrinkId) {
     return (<ContinueRecipeButton recipe={ recipe } recipeType={ recipeType } />);
+  } return (<StartRecipeButton recipe={ recipe } recipeType={ recipeType } />);
+};
+
+const StartContinueFinishButton = (recipe, recipeType, pageName) => {
+  if (pageName === 'details') {
+    return verifyProgress(recipe, recipeType);
   }
-  if (verifyDone()) {
+  if (pageName === 'progress') {
     return (<FinishButton recipe={ recipe } recipeType={ recipeType } />);
   }
-  return (<StartRecipeButton recipe={ recipe } recipeType={ recipeType } />);
 };
 
 export default StartContinueFinishButton;

@@ -6,7 +6,7 @@ import StartContinueFinishButton from
 import Context from '../context/Context';
 import fetchRecipesAPI from '../services/fetchRecipesAPI';
 
-function RecipeInProgress({ match, recipeType }) {
+function RecipeInProgress({ match, recipeType, pageName }) {
   const { idRecipe } = match.params;
   const {
     foodDetails,
@@ -15,15 +15,12 @@ function RecipeInProgress({ match, recipeType }) {
     setDrinkDetails,
   } = useContext(Context);
   useEffect(() => {
-    const returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (returnStorage !== null) {
-      if (recipeType === 'food') {
-        fetchRecipesAPI(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idRecipe}`)
-          .then((data) => setfoodDetails(data));
-      } if (recipeType === 'drink') {
-        fetchRecipesAPI(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idRecipe}`)
-          .then((data) => setDrinkDetails(data));
-      }
+    if (recipeType === 'food') {
+      fetchRecipesAPI(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idRecipe}`)
+        .then((data) => setfoodDetails(data));
+    } if (recipeType === 'drink') {
+      fetchRecipesAPI(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idRecipe}`)
+        .then((data) => setDrinkDetails(data));
     }
   }, []);
 
@@ -34,9 +31,14 @@ function RecipeInProgress({ match, recipeType }) {
   return (
     <div>
       {recipeProgress && recipeProgress.map((recipe, index) => (
-        <RecipeDetails key={ index } recipe={ recipe } page="progress" />
+        <RecipeDetails
+          key={ index }
+          recipe={ recipe }
+          page="progress"
+          recipeType={ recipeType }
+        />
       )) }
-      {recipeProgress && StartContinueFinishButton(recipeProgress, recipeType)}
+      {recipeProgress && StartContinueFinishButton(recipeProgress, recipeType, pageName)}
     </div>
   );
 }

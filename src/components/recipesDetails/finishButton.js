@@ -17,7 +17,7 @@ function FinishButton({ recipe, recipeType }) {
     <button
       type="button"
       disabled
-      data-testid="start-recipe-btn"
+      data-testid="finish-recipe-btn"
       style={ { position: 'fixed', bottom: 0 } }
       onClick={ () => redirectRecipeProgress() }
     >

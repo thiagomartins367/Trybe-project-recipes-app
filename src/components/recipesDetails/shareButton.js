@@ -7,6 +7,7 @@ const PATH_HOME = 'http://localhost:3000';
 const clipboardCopy = require('clipboard-copy');
 
 const ONE_SECOND = 1000;
+// const number = 12;
 
 function ShareButton() {
   const history = useHistory();
@@ -16,6 +17,13 @@ function ShareButton() {
     setLinkCopied,
   } = useContext(Context);
   const shareRecipe = () => {
+    if (pathname.match(/in-progress/)) {
+      const newPathName = pathname.replace('/in-progress', '');
+      const newLinkRecipe = PATH_HOME + newPathName;
+      clipboardCopy(newLinkRecipe);
+      setTimeout(() => setLinkCopied(false), ONE_SECOND);
+      setLinkCopied(true);
+    }
     const linkRecipe = PATH_HOME + pathname;
     clipboardCopy(linkRecipe);
     setTimeout(() => setLinkCopied(false), ONE_SECOND);

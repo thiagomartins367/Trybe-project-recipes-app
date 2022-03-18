@@ -6,7 +6,7 @@ import ShareButton from './shareButton';
 import IngredientList from './ingredientList';
 import IngredientListCheck from './ingredientListCheck';
 
-function RecipeDetails({ recipe, page }) {
+function RecipeDetails({ recipe, page, recipeType }) {
   return (
     <section>
       <RecipeCard
@@ -18,7 +18,7 @@ function RecipeDetails({ recipe, page }) {
       <ShareButton />
       {page === 'details'
         ? <IngredientList recipe={ recipe } />
-        : <IngredientListCheck recipe={ recipe } />}
+        : <IngredientListCheck recipe={ recipe } recipeType={ recipeType } />}
       <h4>
         Instruções
       </h4>

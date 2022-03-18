@@ -17,6 +17,10 @@ html body {
   overflow-x: hidden;
 }
 
+.checkedBox {
+  text-decoration: line-through solid rgb(0, 0, 0);
+}
+
 .carouselGroup:nth-child( 1 ) {
   flex: 1;
   width: 50%;

@@ -7,13 +7,8 @@ import RecomentationRecipe from '../components/recipesDetails/recomendationRecip
 import StartContinueFinishButton from
 '../components/recipesDetails/startContinueFinishButton';
 
-const INITIAL_STORAGE_PROGRESS = {
-  meals: {},
-  cocktails: {},
-};
-
-function DrinkDetails({ match: { params } }) {
-  const drinkIdDetails = params.idRecipe;
+function DrinkDetails({ match, pageName }) {
+  const { idRecipe } = match.params;
   const {
     drinkDetails,
     setDrinkDetails,
@@ -22,12 +17,8 @@ function DrinkDetails({ match: { params } }) {
   } = useContext(Context);
 
   useEffect(() => {
-    fetchRecipesAPI(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkIdDetails}`)
+    fetchRecipesAPI(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idRecipe}`)
       .then((data) => setDrinkDetails(data));
-    const returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    if (returnStorage === null) {
-      localStorage.setItem('inProgressRecipes', JSON.stringify(INITIAL_STORAGE_PROGRESS));
-    }
   }, []);
 
   const { drinks } = drinkDetails;
@@ -37,14 +28,14 @@ function DrinkDetails({ match: { params } }) {
   return (
     <div>
       {drinks && drinks.map((drink) => (
-        <RecipeDetails key={ drink.idDrink } recipe={ drink } page="details" />
+        <RecipeDetails key={ drink.idDrink } recipe={ drink } page={ pageName } />
       )) }
       <RecomentationRecipe
         urlRecipesApi={ urlFoodRecipes }
         stateContext={ allDrinkRecipes }
         setStateContext={ setAllDrinkRecipes }
       />
-      {drinks && StartContinueFinishButton(drinks, recipeType)}
+      {drinks && StartContinueFinishButton(drinks, recipeType, pageName)}
     </div>
   );
 }
