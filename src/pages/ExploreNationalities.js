@@ -37,7 +37,7 @@ function ExploreNationalities() {
         onChange={ (e) => searchRecipe((e.target.value)) }
       >
         <option value="all">All</option>
-        {nationality.map((nat, key) => (
+        {nationality && nationality.map((nat, key) => (
           <option
             value={ nat.strArea }
             key={ key }
