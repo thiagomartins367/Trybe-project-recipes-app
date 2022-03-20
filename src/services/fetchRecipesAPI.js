@@ -4,7 +4,7 @@ const fetchRecipesAPI = async (url) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log('REQUEST ERROR "fetchRecipesAPI": ', error);
+    console.error('REQUEST ERROR "fetchRecipesAPI": ', error);
   }
 };
 
