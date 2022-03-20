@@ -54,7 +54,7 @@ html body {
 }
 
 .header-h1-page-title {
-  font-size: 24pt;
+  font-size: 20pt;
   margin: 0.001px;
 }
 
@@ -177,6 +177,26 @@ footer section {
   font-family: Montserrat , sans-serif;
   font-size: 3em;
   font-weight: 900;
+}
+
+.section-nationality-dropdown {
+  padding: 5px 0.001px;
+  text-align: center;
+  width: 100%;
+}
+
+.nationality-dropdown {
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 18pt;
+  outline: none;
+  text-align: center;
+  width: 95%;
+}
+
+.nationality-dropdown option {
+  width: 40px;
 }
 
 @keyframes shake {
