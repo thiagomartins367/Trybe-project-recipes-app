@@ -1,6 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import propTypes from 'prop-types';
 
-function ContinueRecipeButton() {
+function ContinueRecipeButton({ recipe, recipeType }) {
+  const history = useHistory();
+  const redirectRecipeProgress = () => {
+    if (recipeType === 'food') {
+      const idRecipeFood = recipe[0].idMeal;
+      history.push(`/foods/${idRecipeFood}/in-progress`);
+    } else {
+      const idRecipeDrink = recipe[0].idDrink;
+      history.push(`/drinks/${idRecipeDrink}/in-progress`);
+    }
+  };
   return (
     <button
       type="button"
@@ -12,5 +24,10 @@ function ContinueRecipeButton() {
     </button>
   );
 }
+
+ContinueRecipeButton.propTypes = {
+  recipe: propTypes.string,
+  recipeType: propTypes.string,
+}.isRequired;
 
 export default ContinueRecipeButton;

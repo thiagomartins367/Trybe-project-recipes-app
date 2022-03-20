@@ -2,6 +2,30 @@ html body {
   height: 100vh;
 }
 
+/* .carousel {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  gap: 20px;
+} */
+
+.carouselGroup {
+  display: flex;
+
+  /* flex-wrap: wrap; */
+  overflow-x: hidden;
+}
+
+.checkedBox {
+  text-decoration: line-through solid black;
+}
+
+.carouselGroup:nth-child( 1 ) {
+  flex: 1;
+  width: 50%;
+}
+
 .section-header {
   align-items: center;
   background-color: rgb(194, 189, 189);

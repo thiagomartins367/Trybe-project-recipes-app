@@ -4,8 +4,9 @@ import RecipeCard from './recipeCard';
 import FavoriteButton from './favoriteButton';
 import ShareButton from './shareButton';
 import IngredientList from './ingredientList';
+import IngredientListCheck from './ingredientListCheck';
 
-function RecipeDetails({ recipe }) {
+function RecipeDetails({ recipe, page, recipeType }) {
   return (
     <section>
       <RecipeCard
@@ -15,7 +16,9 @@ function RecipeDetails({ recipe }) {
       />
       <FavoriteButton recipe={ recipe } />
       <ShareButton />
-      <IngredientList recipe={ recipe } />
+      {page === 'details'
+        ? <IngredientList recipe={ recipe } />
+        : <IngredientListCheck recipe={ recipe } recipeType={ recipeType } />}
       <h4>
         Instruções
       </h4>

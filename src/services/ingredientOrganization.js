@@ -7,6 +7,7 @@ function IngredientOrganization(recipe) {
       orderIngredients.push({
         ingredient: recipe[`strIngredient${count}`],
         measure: recipe[`strMeasure${count}`] || '',
+        checked: false,
       });
     }
   }
