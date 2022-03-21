@@ -18,3 +18,4 @@ export const NAME_SEARCH_FILTER_DRINK = 'https://www.thecocktaildb.com/api/json/
 export const SEARCH_LATTER_SEARCH_FILTER_DRINK = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
 export const URL_NATIONALITIES = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
 export const URL_FOOD_NATIONALITIES = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=';
+export const TIME_OUT_MS = 300;

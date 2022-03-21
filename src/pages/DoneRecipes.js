@@ -49,28 +49,30 @@ function DoneRecipes() {
         titleName="Done Recipes"
         searchIconOnScreen={ false }
       />
-      <button
-        data-testid="filter-by-all-btn"
-        type="button"
-        onClick={ () => setBtnPressed('all') }
-      >
-        All
-      </button>
-      <button
-        data-testid="filter-by-food-btn"
-        type="button"
-        onClick={ () => setBtnPressed('food') }
-      >
-        Food
-      </button>
-      <button
-        data-testid="filter-by-drink-btn"
-        type="button"
-        onClick={ () => setBtnPressed('drink') }
-      >
-        Drinks
-      </button>
-      <ul>
+      <section className="section-btns-filter-done-recipes">
+        <button
+          data-testid="filter-by-all-btn"
+          type="button"
+          onClick={ () => setBtnPressed('all') }
+        >
+          All
+        </button>
+        <button
+          data-testid="filter-by-food-btn"
+          type="button"
+          onClick={ () => setBtnPressed('food') }
+        >
+          Food
+        </button>
+        <button
+          data-testid="filter-by-drink-btn"
+          type="button"
+          onClick={ () => setBtnPressed('drink') }
+        >
+          Drinks
+        </button>
+      </section>
+      <ul className="ul-cards-done-recipes">
         { showCards() }
       </ul>
     </section>

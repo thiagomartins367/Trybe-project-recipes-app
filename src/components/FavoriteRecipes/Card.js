@@ -45,6 +45,7 @@ function Card({
         </Link>
         <div className="div-buttons-share-disfavor">
           <button
+            className="bnt-share-favorite-recipes"
             onClick={ () => {
               navigator.clipboard.writeText(`${window.location.origin}/${type}s/${id}`);
               // https://developer.mozilla.org/en-US/docs/Web/API/Location/origin
@@ -59,6 +60,7 @@ function Card({
           </button>
           { copy && <p>Link copied!</p>}
           <button
+            className="bnt-disfavor-favorite-recipes"
             data-testid={ `${index}-horizontal-favorite-btn` }
             type="button"
             src={ iconFav }

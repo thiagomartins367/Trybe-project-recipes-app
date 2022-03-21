@@ -358,7 +358,7 @@ footer section {
 }
 
 .nationality-dropdown {
-  background-color: rgb(73, 88, 103);
+  background-color: rgb(255, 84, 0);
   border: 1px solid black;
   border-radius: 5px;
   font-size: 23pt;
@@ -372,7 +372,31 @@ footer section {
   width: 40px;
 }
 
-.ul-cards-favorite-recipes {
+.section-btns-filter-favorite-recipes, .section-btns-filter-done-recipes {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* background-color: chocolate; */
+}
+
+.section-btns-filter-favorite-recipes button, .section-btns-filter-done-recipes button {
+  background-color: rgb(255, 84, 0);
+  border: none;
+  font-size: 15pt;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px;
+  margin: 10px 5px;
+  min-width: 90px;
+  min-height: 35px;
+}
+
+.section-btns-filter-favorite-recipes button:active, .section-btns-filter-done-recipes button:active {
+  box-shadow: 1px 1px 1px;
+  background-color: rgb(0, 180, 216);
+}
+
+.ul-cards-favorite-recipes, .ul-cards-done-recipes {
   /* display: flex;
   align-items: center;
   justify-content: space-between;
@@ -381,7 +405,7 @@ footer section {
   /* height: 100vh; */
 }
 
-.card-li-favorite-recipes {
+.card-li-favorite-recipes, .card-li-done-recipes {
   /* background-color: rgb(14, 236, 132); */
   list-style: none;
   width: 100%;
@@ -390,49 +414,113 @@ footer section {
   box-shadow: 2px 5px 3px rgb(163, 163, 163);
 }
 
-/* .li-div-favorite-recipes {
+/* .li-div-favorite-recipes, .li-div-done-recipes {
   
 } */
 
-.div-name-category-favorite-recipes {
+.div-name-category-favorite-recipes, .div-name-category-done-recipes {
   display: inline-block;
 }
 
-.div-buttons-share-disfavor {
+.div-buttons-share-disfavor, .div-buttons-share-done-recipes {
   /* display: inline-block; */
   text-align: center;
   /* background-color: red; */
   padding: 10px;
+  margin-top: 20px;
 }
 
-.div-buttons-share-disfavor button {
+.div-buttons-share-disfavor button, .div-buttons-share-done-recipes button {
   font-size: 13pt;
   border: none;
   font-family: 'Poppins', sans-serif;
   border-radius: 10px;
-  background-color: rgb(131, 131, 131);
   margin-right: 10px;
 }
 
-.card-li-favorite-recipes p {
+.bnt-share-favorite-recipes, .bnt-share-done-recipes {
+  background-color: rgb(58, 226, 17);
+}
+
+.bnt-disfavor-favorite-recipes {
+  background-color: rgb(255, 122, 122);
+}
+
+.card-li-favorite-recipes p, .card-li-done-recipes p {
   display: inline-block;
   margin: 5px;
 }
 
-.category-recipe-favorite-recipes {
+.category-recipe-favorite-recipes, .category-recipe-done-recipes {
   color: rgb(128, 128, 128);
-  font-size: 12pt;
+  font-size: 13pt;
 }
 
-.name-recipe-favorite-recipes {
+.name-recipe-favorite-recipes, .name-recipe-done-recipes {
   color: black;
-  font-size: 20pt;
+  font-size: 21pt;
 }
 
-.card-li-favorite-recipes img {
+.recipe-done-in-done-recipes {
+  color: black;
+  font-size: 12pt;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tags-done-recipes {
+  color: black;
+  font-size: 14pt;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tags-done-recipes span {
+  display: inline-block;
+  background-color: rgb(128, 128, 128);
+  padding: 2px 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.card-li-favorite-recipes img, .card-li-done-recipes img {
   border-radius: 10px 10px 0.001px 0.001px;
   width: 100%;
   height: 250px;
+}
+
+.section-profile {
+  height: 100vh;
+}
+
+.user-email-profile {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.section-buttons-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  height: 60vh;
+  /* background-color: red; */
+  padding: 10px;
+}
+
+.section-buttons-profile button {
+  border: none;
+  outline: none;
+  font-size: 25pt;
+  font-family: 'Poppins', sans-serif;
+  width: 100vh;
+  box-shadow: 1px 5px 10px rgb(163, 163, 163);
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.section-buttons-profile button:active {
+  box-shadow: 1px 1px 1px;
+  background-color: rgb(0, 180, 216);
 }
 
 @keyframes shake {
