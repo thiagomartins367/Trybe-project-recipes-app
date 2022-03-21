@@ -14,7 +14,7 @@
   width: 50%;
  } */
 
-.section-form-login{
+.section-form-login {
   align-items: center;
   background-image: url('https://media.istockphoto.com/photos/cookbook-with-vegetables-spices-and-herbs-shot-from-above-on-rustic-picture-id1125612329?k=20&m=1125612329&s=612x612&w=0&h=Y8wMGxEgJQb_KzeVEMlWwOewvwi0FJCuvoQNQ3EnaOA=');
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@
 
   /* background-color: rgba(0, 0, 0, 0.877); */
   background-color: rgba(230, 21, 24, 0.822);
-  border-radius: 50px 10px 50px 10px;
+  border-radius: 50px 10px;
   padding: 10px;
   width: 80%;
 }
@@ -38,7 +38,7 @@
 
   /* background-color: rgb(186, 24, 27); */
   color: white;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 50pt;
   font-weight: 300;
   margin-bottom: 10%;
@@ -70,18 +70,18 @@
 
 .btn-login {
   background-color: white;
-  border-radius: 50px;
   border: none;
+  border-radius: 50px;
 
   /* box-shadow: 0.001px 5px 3px rgb(161, 161, 161); */
   color: black;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 25pt;
   margin: 10px;
   outline: none;
   padding: 10px;
   transition: 600ms;
-  width: 90%; 
+  width: 90%;
 }
 
 .btn-login:disabled {
@@ -131,6 +131,12 @@ header {
   box-shadow: none;
 }
 
+.card-li-favorite-recipes img, .card-li-done-recipes img {
+  border-radius: 10px 10px 0.001px 0.001px;
+  height: 250px;
+  width: 100%;
+}
+
 .header-div-button-profile button img, .header-div-button-search button img {
   width: 37px;
 }
@@ -140,7 +146,7 @@ header {
 }
 
 .header-h1-page-title {
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 18pt;
   margin: 0.001px;
 }
@@ -165,7 +171,7 @@ header {
 .header-section-radio-buttons {
   align-items: center;
   display: flex;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 14pt;
   justify-content: space-between;
   padding: 10px 2%;
@@ -188,7 +194,7 @@ header {
   border: none;
   border-radius: 10px;
   color: black;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   margin: 15px;
   padding: 10px;
   width: 30%;
@@ -209,7 +215,7 @@ header {
   border: none;
   border-radius: 5px;
   box-shadow: 2px 2px 5px;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 15pt;
   margin: 10px 5px;
   min-height: 35px;
@@ -240,8 +246,8 @@ header {
 
 .button-card-ingredients {
   background-color: white;
-  border-radius: 10px;
   border: none;
+  border-radius: 10px;
   padding: 0.001px;
   text-align: center;
   width: 170px;
@@ -350,11 +356,11 @@ footer section {
 }
 
 .btn-explore {
+  background-color: white;
   border: none;
   border-radius: 5px;
-  background-color: white;
   box-shadow: 1px 5px 10px rgb(163, 163, 163);
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 25pt;
   outline: none;
   padding: 20px;
@@ -396,14 +402,23 @@ footer section {
   border: none;
   border-radius: 5px;
   box-shadow: 2px 2px 5px;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 15pt;
   margin: 10px 5px;
   min-height: 35px;
   min-width: 90px;
 }
 
-.section-btns-filter-favorite-recipes button:active, .section-btns-filter-done-recipes button:active {
+.div-buttons-share-disfavor button, .div-buttons-share-done-recipes button {
+  border: none;
+  border-radius: 10px;
+  font-family: Poppins , sans-serif;
+  font-size: 13pt;
+  margin-right: 10px;
+}
+
+.section-btns-filter-favorite-recipes button:active,
+.section-btns-filter-done-recipes button:active {
   background-color: rgb(0, 180, 216);
   box-shadow: 1px 1px 1px;
 }
@@ -429,7 +444,7 @@ footer section {
 }
 
 /* .li-div-favorite-recipes, .li-div-done-recipes {
-  
+
 } */
 
 .div-name-category-favorite-recipes, .div-name-category-done-recipes {
@@ -439,18 +454,11 @@ footer section {
 .div-buttons-share-disfavor, .div-buttons-share-done-recipes {
 
   /* background-color: red; */
+
   /* display: inline-block; */
   margin-top: 20px;
   padding: 10px;
   text-align: center;
-}
-
-.div-buttons-share-disfavor button, .div-buttons-share-done-recipes button {
-  border: none;
-  border-radius: 10px;
-  font-family: Poppins, sans-serif;
-  font-size: 13pt;
-  margin-right: 10px;
 }
 
 .bnt-share-favorite-recipes, .bnt-share-done-recipes {
@@ -478,13 +486,13 @@ footer section {
 
 .recipe-done-in-done-recipes {
   color: black;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 12pt;
 }
 
 .tags-done-recipes {
   color: black;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 14pt;
 }
 
@@ -496,18 +504,12 @@ footer section {
   text-align: center;
 }
 
-.card-li-favorite-recipes img, .card-li-done-recipes img {
-  border-radius: 10px 10px 0.001px 0.001px;
-  height: 250px;
-  width: 100%;
-}
-
 .section-profile {
   height: 100vh;
 }
 
 .user-email-profile {
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   text-align: center;
 }
 
@@ -523,11 +525,11 @@ footer section {
 }
 
 .section-buttons-profile button {
+  background-color: white;
   border: none;
   border-radius: 5px;
-  background-color: white;
   box-shadow: 1px 5px 10px rgb(163, 163, 163);
-  font-family: Poppins, sans-serif;
+  font-family: Poppins , sans-serif;
   font-size: 25pt;
   outline: none;
   padding: 20px;
