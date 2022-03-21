@@ -444,7 +444,12 @@ footer section {
   box-shadow: 1px 1px 1px;
 }
 
-.section-btns-filter-favorite-recipes button:active, .section-btns-filter-done-recipes button:active {
+.section-btns-filter-favorite-recipes button:active {
+  background-color: rgb(0, 180, 216);
+  box-shadow: 1px 1px 1px;
+}
+
+.section-btns-filter-done-recipes button:active {
   background-color: rgb(0, 180, 216);
   box-shadow: 1px 1px 1px;
 }
