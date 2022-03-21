@@ -4,7 +4,22 @@ import ContinueRecipeButton from './continueRecipeButton';
 import FinishButton from './finishButton';
 
 const verifyProgress = (recipe, recipeType) => {
-  const returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  let returnStorage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (returnStorage === null) {
+    returnStorage = {
+      meals: {},
+      cocktails: {},
+    };
+  }
+  // console.log('returnStorage.cocktails: ', returnStorage.cocktails);
+  // console.log('returnStorage: ', returnStorage);
+  // console.log('recipeType: ', recipeType);
+  // console.log('recipe: ', recipe);
+  if (returnStorage.meals === undefined) {
+    returnStorage.meals = {};
+  } else if (returnStorage.cocktails === undefined) {
+    returnStorage.cocktails = {};
+  }
   if (!returnStorage) {
     return <StartRecipeButton recipe={ recipe } recipeType={ recipeType } />;
   }
@@ -17,15 +32,18 @@ const verifyProgress = (recipe, recipeType) => {
       return (<ContinueRecipeButton recipe={ recipe } recipeType={ recipeType } />);
     } return (<StartRecipeButton recipe={ recipe } recipeType={ recipeType } />);
   }
-  const { idDrink } = recipeDesctructuring;
-  const idDrinkInProgress = Object.keys(returnStorage.cocktails);
-  const searchDrinkId = idDrinkInProgress.some((id) => idDrink === id);
-  if (searchDrinkId) {
-    return (<ContinueRecipeButton recipe={ recipe } recipeType={ recipeType } />);
-  } return (<StartRecipeButton recipe={ recipe } recipeType={ recipeType } />);
+  if (recipeType === 'drink') {
+    const { idDrink } = recipeDesctructuring;
+    const idDrinkInProgress = Object.keys(returnStorage.cocktails);
+    const searchDrinkId = idDrinkInProgress.some((id) => idDrink === id);
+    if (searchDrinkId) {
+      return (<ContinueRecipeButton recipe={ recipe } recipeType={ recipeType } />);
+    } return (<StartRecipeButton recipe={ recipe } recipeType={ recipeType } />);
+  }
 };
 
 const StartContinueFinishButton = (recipe, recipeType, pageName) => {
+  // console.log('pageName: ', pageName);
   if (pageName === 'details') {
     return verifyProgress(recipe, recipeType);
   }

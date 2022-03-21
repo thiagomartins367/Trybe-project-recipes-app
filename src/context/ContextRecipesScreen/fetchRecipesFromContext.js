@@ -11,7 +11,7 @@ const fetchRecipesFromContext = async (typeOfRecipes, category) => {
         ? 'meals' : 'drinks'
     ];
     const array = [];
-    console.log('filteredRecipes: ', filteredRecipes);
+    // console.log('filteredRecipes: ', filteredRecipes);
     for (
       let index = 0;
       index < FIRST_12_RECIPES && filteredRecipes[index] !== undefined;

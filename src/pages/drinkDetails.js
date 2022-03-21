@@ -22,6 +22,7 @@ function DrinkDetails({ match, pageName }) {
   }, []);
 
   const { drinks } = drinkDetails;
+  // console.log('drinks: ', drinks);
   const urlFoodRecipes = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
   const recipeType = 'drink';
 

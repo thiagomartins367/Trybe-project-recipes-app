@@ -13,37 +13,45 @@ function ExploreFoods() {
   };
 
   return (
-    <div>
-      <Header />
-      <button
-        type="button"
-        data-testid="explore-by-ingredient"
-        onClick={ () => {
-          history.push('/explore/foods/ingredients');
-        } }
-      >
-        By Ingredient
+    <section className="section-explore">
+      <Header
+        titleName="Explore Foods"
+        searchIconOnScreen={ false }
+      />
+      <section className="section-btn-explore-foods">
+        <button
+          type="button"
+          className="btn-explore"
+          data-testid="explore-by-ingredient"
+          onClick={ () => {
+            history.push('/explore/foods/ingredients');
+          } }
+        >
+          By Ingredient
 
-      </button>
-      <button
-        type="button"
-        data-testid="explore-by-nationality"
-        onClick={ () => {
-          history.push('/explore/foods/nationalities');
-        } }
-      >
-        By Nationality
+        </button>
+        <button
+          type="button"
+          className="btn-explore"
+          data-testid="explore-by-nationality"
+          onClick={ () => {
+            history.push('/explore/foods/nationalities');
+          } }
+        >
+          By Nationality
 
-      </button>
-      <button
-        type="button"
-        data-testid="explore-surprise"
-        onClick={ () => getRecipe() }
-      >
-        Surprise me!
-      </button>
+        </button>
+        <button
+          type="button"
+          className="btn-explore"
+          data-testid="explore-surprise"
+          onClick={ () => getRecipe() }
+        >
+          Surprise me!
+        </button>
+      </section>
       <BottomMenu />
-    </div>
+    </section>
   );
 }
 

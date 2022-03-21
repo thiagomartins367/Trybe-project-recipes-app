@@ -40,7 +40,7 @@ const RecipesScreen = ({ match: { path } }) => {
   default:
     break;
   }
-  console.log('stateActiveFilter: ', stateActiveFilter);
+  // console.log('stateActiveFilter: ', stateActiveFilter);
   if (recipesData.length >= FIRST_12_RECIPES && stateActiveFilter === 'All') {
     const editableRecipeData = [];
     for (let index = 0; index < FIRST_12_RECIPES; index += 1) {
@@ -75,7 +75,10 @@ const RecipesScreen = ({ match: { path } }) => {
 
   return (
     <section>
-      <Header />
+      <Header
+        titleName={ pathname === '/foods' ? 'Foods' : 'Drinks' }
+        searchIconOnScreen
+      />
       <section className="section-filters-recipes">
         {recipesCategories && recipesCategories.map((category) => (
           <button
@@ -107,6 +110,7 @@ const RecipesScreen = ({ match: { path } }) => {
           </Link>
         ))}
       </section>
+      <br />
       <br />
       <br />
       <BottomMenu />

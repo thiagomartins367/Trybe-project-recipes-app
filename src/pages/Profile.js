@@ -16,8 +16,11 @@ function Profile() {
   }, []);
 
   return (
-    <div>
-      <Header />
+    <section>
+      <Header
+        titleName="Profile"
+        searchIconOnScreen={ false }
+      />
       <h3 data-testid="profile-email">{emailProfile.email}</h3>
       <button
         type="button"
@@ -49,7 +52,7 @@ function Profile() {
         Logout
       </button>
       <BottomMenu />
-    </div>
+    </section>
   );
 }
 

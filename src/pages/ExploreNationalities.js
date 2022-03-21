@@ -59,7 +59,10 @@ function ExploreNationalities() {
 
   return (
     <section>
-      <Header />
+      <Header
+        titleName="Explore Nationalities"
+        searchIconOnScreen={ false }
+      />
       <section className="section-nationality-dropdown">
         <select
           className="nationality-dropdown"
@@ -93,6 +96,7 @@ function ExploreNationalities() {
           </Link>
         ))}
       </section>
+      <br />
       <br />
       <br />
       <BottomMenu />

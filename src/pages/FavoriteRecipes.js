@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from '../components/FavoriteRecipes/Card';
+import Header from '../components/Header';
 
 function FavoriteRecipes() {
   const [pressedBtn, setBtnPressed] = useState('all');
@@ -39,8 +40,11 @@ function FavoriteRecipes() {
       )));
   }
   return (
-    <div>
-      <header>Receitas Favoritas</header>
+    <section>
+      <Header
+        titleName="Favorite Recipes"
+        searchIconOnScreen={ false }
+      />
       <button
         data-testid="filter-by-all-btn"
         type="button"
@@ -62,10 +66,10 @@ function FavoriteRecipes() {
       >
         Drinks
       </button>
-      <ul>
+      <ul className="ul-cards-favorite-recipes">
         { showCards() }
       </ul>
-    </div>
+    </section>
   );
 }
 

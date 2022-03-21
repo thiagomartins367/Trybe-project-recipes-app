@@ -29,7 +29,7 @@ function RecipeInProgress({ match, recipeType, pageName }) {
   const recipeProgress = meals || drinks;
 
   return (
-    <div>
+    <section>
       {recipeProgress && recipeProgress.map((recipe, index) => (
         <RecipeDetails
           key={ index }
@@ -39,7 +39,7 @@ function RecipeInProgress({ match, recipeType, pageName }) {
         />
       )) }
       {recipeProgress && StartContinueFinishButton(recipeProgress, recipeType, pageName)}
-    </div>
+    </section>
   );
 }
 

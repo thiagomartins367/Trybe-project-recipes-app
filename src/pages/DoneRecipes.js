@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from '../components/DoneRecipes/Card';
+import Header from '../components/Header';
 
 function DoneRecipes() {
   const [pressedBtn, setBtnPressed] = useState('all');
@@ -43,8 +44,11 @@ function DoneRecipes() {
       )));
   }
   return (
-    <div>
-      <header>Receitas feitas</header>
+    <section>
+      <Header
+        titleName="Done Recipes"
+        searchIconOnScreen={ false }
+      />
       <button
         data-testid="filter-by-all-btn"
         type="button"
@@ -69,7 +73,7 @@ function DoneRecipes() {
       <ul>
         { showCards() }
       </ul>
-    </div>
+    </section>
   );
 }
 
