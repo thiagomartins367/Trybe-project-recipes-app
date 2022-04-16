@@ -4,7 +4,7 @@ const fetchRecipesCategoriesAPI = async (urlRecipesCategories) => {
     const recipesCategories = await response.json();
     return recipesCategories;
   } catch (error) {
-    console.log('REQUEST ERROR "fetchRecipesCategoriesAPI": ', error);
+    console.error('REQUEST ERROR "fetchRecipesCategoriesAPI": ', error);
   }
 };
 

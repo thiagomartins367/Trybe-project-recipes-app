@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import BottomMenu from '../components/BottomMenu';
+import Header from '../components/Header';
 import RecipeCard from '../components/recipesScreen/RecipeCard';
 import { FIRST_12_RECIPES } from '../constants';
 import Context from '../context/Context';
@@ -30,26 +32,34 @@ function DrinksIngredients() {
   }, []);
 
   return (
-    <div>
-      <h1>Explore Drinks Ingredients</h1>
-      {ingredients.map((ingredient, index) => (
-        <div key={ index } data-testid={ `${index}-ingredient-card` }>
+    <section>
+      <Header
+        titleName="Explore Ingredients"
+        searchIconOnScreen={ false }
+      />
+      <section className="meals">
+        {ingredients.map((ingredient, index) => (
           <button
-            className="noStyleBtn"
+            key={ index }
+            className="button-card-ingredients"
             type="button"
             onClick={ () => { searchRecipe(ingredient.strIngredient1); } }
           >
             <RecipeCard
-              dataTestIdRecipeCard={ `${index}-recipe-card` }
+              dataTestIdRecipeCard={ `${index}-ingredient-card` }
               dataTestIdRecipeImg={ `${index}-card-img` }
               dataTestIdRecipeName={ `${index}-card-name` }
               recipeImage={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
               recipeName={ ingredient.strIngredient1 }
             />
           </button>
-        </div>
-      ))}
-    </div>
+        ))}
+      </section>
+      <br />
+      <br />
+      <br />
+      <BottomMenu />
+    </section>
   );
 }
 

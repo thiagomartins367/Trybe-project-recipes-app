@@ -31,7 +31,7 @@ function FinishButton({ recipe, recipeType }) {
       name: recipe[0].strMeal || recipe[0].strDrink,
       image: recipe[0].strMealThumb || recipe[0].strDrinkThumb,
       doneDate,
-      tags: recipe[0].strTags || '',
+      tags: [recipe[0].strTags] || '',
     }];
     addFinishRecipe(finishRecipeStore);
     setRemoveButtonFinish(true);

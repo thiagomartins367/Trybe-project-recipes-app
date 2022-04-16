@@ -13,7 +13,7 @@ const handleFilters = (
     : [...stateDrinkRecipesCategories];
   const buttons = document.querySelectorAll('.button-filter');
   buttons.forEach((htmlElement) => {
-    htmlElement.style.backgroundColor = 'rgb(212, 212, 212)';
+    htmlElement.style.backgroundColor = 'rgb(255, 84, 0)';
   });
   return { category, typeOfRecipes, categories };
 };

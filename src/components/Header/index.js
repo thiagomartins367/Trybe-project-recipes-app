@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import Context from '../../context/Context';
 import profileIcon from '../../images/profileIcon.svg';
@@ -29,7 +30,7 @@ const alertRequest = (response, history, setEditableStateRecipes, pathName) => {
   consultRedurect(response, history, pathName);
 };
 
-export default function Header() {
+export default function Header({ titleName, searchIconOnScreen }) {
   const [searchBarEnable, setSearchBarEnable] = useState(false);
   const [search, setSearch] = useState('');
   const [radio, setRadio] = useState('');
@@ -52,6 +53,7 @@ export default function Header() {
       string += pathName[index];
     }
   }
+  console.log(pathnameFormatted);
   const onChangSearch = ({ target: { value } }) => setSearch(value);
   const onChangeRadio = ({ target: { value } }) => {
     setRadio(value);
@@ -103,10 +105,10 @@ export default function Header() {
           </button>
         </div>
         <h1 className="header-h1-page-title" data-testid="page-title">
-          { pathnameFormatted }
+          { titleName }
         </h1>
         <div className="header-div-button-search">
-          {(pathname === '/foods' || pathname === '/drinks') && (
+          {searchIconOnScreen && (
             <button
               type="button"
               onClick={ () => setSearchBarEnable(!searchBarEnable) }
@@ -120,9 +122,9 @@ export default function Header() {
           )}
         </div>
       </section>
-      <div className="header-div-search-bar">
-        {searchBarEnable && (
-          <>
+      {searchBarEnable && (
+        <section className="header-section-search-bar">
+          <div className="header-div-search">
             <input
               type="text"
               value={ search }
@@ -130,45 +132,49 @@ export default function Header() {
               data-testid="search-input"
               onChange={ onChangSearch }
             />
-            <div style={ { display: 'flex', alignItems: 'space-between' } }>
-              <div style={ { marginLeft: '8px' } }>
-                <label htmlFor="ingredient-name">
-                  <input
-                    type="radio"
-                    data-testid="ingredient-search-radio"
-                    name="product"
-                    value="ingredient"
-                    onChange={ onChangeRadio }
-                  />
-                  Ingredient
-                </label>
-              </div>
-              <div style={ { marginLeft: '8px' } }>
-                <label htmlFor="name">
-                  <input
-                    type="radio"
-                    data-testid="name-search-radio"
-                    name="product"
-                    value="name"
-                    onChange={ onChangeRadio }
-                  />
-                  Name
-                </label>
-              </div>
-              <div style={ { marginLeft: '8px' } }>
-                <label htmlFor="fist-letter">
-                  <input
-                    type="radio"
-                    data-testid="first-letter-search-radio"
-                    name="product"
-                    value="fist-letter"
-                    onChange={ onChangeRadio }
-                  />
-                  Fist Letter
-                </label>
-              </div>
+          </div>
+          <section className="header-section-radio-buttons">
+            <div style={ { marginLeft: '8px' } }>
+              <label htmlFor="ingredient-name">
+                <input
+                  type="radio"
+                  className="header-radio-button"
+                  data-testid="ingredient-search-radio"
+                  name="product"
+                  value="ingredient"
+                  onChange={ onChangeRadio }
+                />
+                Ingredient
+              </label>
             </div>
-            <p />
+            <div style={ { marginLeft: '8px' } }>
+              <label htmlFor="name">
+                <input
+                  type="radio"
+                  className="header-radio-button"
+                  data-testid="name-search-radio"
+                  name="product"
+                  value="name"
+                  onChange={ onChangeRadio }
+                />
+                Name
+              </label>
+            </div>
+            <div style={ { marginLeft: '8px' } }>
+              <label htmlFor="fist-letter">
+                <input
+                  type="radio"
+                  className="header-radio-button"
+                  data-testid="first-letter-search-radio"
+                  name="product"
+                  value="fist-letter"
+                  onChange={ onChangeRadio }
+                />
+                Fist Letter
+              </label>
+            </div>
+          </section>
+          <div className="header-div-search-btn">
             <button
               type="button"
               data-testid="exec-search-btn"
@@ -176,9 +182,14 @@ export default function Header() {
             >
               Search
             </button>
-          </>
-        )}
-      </div>
+          </div>
+        </section>
+      )}
     </header>
   );
 }
+
+Header.propTypes = {
+  titleName: PropTypes.string,
+  searchIconOnScreen: PropTypes.bool,
+}.isRequired;

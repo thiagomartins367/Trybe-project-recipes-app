@@ -40,7 +40,7 @@ const RecipesScreen = ({ match: { path } }) => {
   default:
     break;
   }
-  console.log('stateActiveFilter: ', stateActiveFilter);
+  console.log('recipesData: ', recipesData);
   if (recipesData.length >= FIRST_12_RECIPES && stateActiveFilter === 'All') {
     const editableRecipeData = [];
     for (let index = 0; index < FIRST_12_RECIPES; index += 1) {
@@ -75,7 +75,10 @@ const RecipesScreen = ({ match: { path } }) => {
 
   return (
     <section>
-      <Header />
+      <Header
+        titleName={ pathname === '/foods' ? 'Foods' : 'Drinks' }
+        searchIconOnScreen
+      />
       <section className="section-filters-recipes">
         {recipesCategories && recipesCategories.map((category) => (
           <button
@@ -92,21 +95,28 @@ const RecipesScreen = ({ match: { path } }) => {
         ))}
       </section>
       <section className="meals">
-        {recipesCategories && editableStateRecipes.map((element, index) => (
-          <Link
-            to={ `${path}/${element[`id${typeOfRecipes}`]}` }
-            key={ `${index}-${element[`str${typeOfRecipes}`]}` }
-          >
-            <RecipeCard
-              dataTestIdRecipeCard={ `${index}-recipe-card` }
-              dataTestIdRecipeImg={ `${index}-card-img` }
-              dataTestIdRecipeName={ `${index}-card-name` }
-              recipeImage={ element[`str${typeOfRecipes}Thumb`] }
-              recipeName={ element[`str${typeOfRecipes}`] }
-            />
-          </Link>
-        ))}
+        {recipesCategories && editableStateRecipes.map((element, index) => {
+          try {
+            return (
+              <Link
+                to={ `${path}/${element[`id${typeOfRecipes}`]}` }
+                key={ `${index}-${element[`str${typeOfRecipes}`]}` }
+              >
+                <RecipeCard
+                  dataTestIdRecipeCard={ `${index}-recipe-card` }
+                  dataTestIdRecipeImg={ `${index}-card-img` }
+                  dataTestIdRecipeName={ `${index}-card-name` }
+                  recipeImage={ element[`str${typeOfRecipes}Thumb`] }
+                  recipeName={ element[`str${typeOfRecipes}`] }
+                />
+              </Link>);
+          } catch (error) {
+            window.alert('Sorry, we havent found any recipes for these filters.');
+          }
+          return '';
+        })}
       </section>
+      <br />
       <br />
       <br />
       <BottomMenu />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from '../components/FavoriteRecipes/Card';
+import Header from '../components/Header';
 
 function FavoriteRecipes() {
   const [pressedBtn, setBtnPressed] = useState('all');
@@ -39,33 +40,38 @@ function FavoriteRecipes() {
       )));
   }
   return (
-    <div>
-      <header>Receitas Favoritas</header>
-      <button
-        data-testid="filter-by-all-btn"
-        type="button"
-        onClick={ () => setBtnPressed('all') }
-      >
-        All
-      </button>
-      <button
-        data-testid="filter-by-food-btn"
-        type="button"
-        onClick={ () => setBtnPressed('food') }
-      >
-        Food
-      </button>
-      <button
-        data-testid="filter-by-drink-btn"
-        type="button"
-        onClick={ () => setBtnPressed('drink') }
-      >
-        Drinks
-      </button>
-      <ul>
+    <section>
+      <Header
+        titleName="Favorite Recipes"
+        searchIconOnScreen={ false }
+      />
+      <section className="section-btns-filter-favorite-recipes">
+        <button
+          data-testid="filter-by-all-btn"
+          type="button"
+          onClick={ () => setBtnPressed('all') }
+        >
+          All
+        </button>
+        <button
+          data-testid="filter-by-food-btn"
+          type="button"
+          onClick={ () => setBtnPressed('food') }
+        >
+          Food
+        </button>
+        <button
+          data-testid="filter-by-drink-btn"
+          type="button"
+          onClick={ () => setBtnPressed('drink') }
+        >
+          Drinks
+        </button>
+      </section>
+      <ul className="ul-cards-favorite-recipes">
         { showCards() }
       </ul>
-    </div>
+    </section>
   );
 }
 

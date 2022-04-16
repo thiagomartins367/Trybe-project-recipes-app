@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from '../components/DoneRecipes/Card';
+import Header from '../components/Header';
 
 function DoneRecipes() {
   const [pressedBtn, setBtnPressed] = useState('all');
@@ -43,33 +44,38 @@ function DoneRecipes() {
       )));
   }
   return (
-    <div>
-      <header>Receitas feitas</header>
-      <button
-        data-testid="filter-by-all-btn"
-        type="button"
-        onClick={ () => setBtnPressed('all') }
-      >
-        All
-      </button>
-      <button
-        data-testid="filter-by-food-btn"
-        type="button"
-        onClick={ () => setBtnPressed('food') }
-      >
-        Food
-      </button>
-      <button
-        data-testid="filter-by-drink-btn"
-        type="button"
-        onClick={ () => setBtnPressed('drink') }
-      >
-        Drinks
-      </button>
-      <ul>
+    <section>
+      <Header
+        titleName="Done Recipes"
+        searchIconOnScreen={ false }
+      />
+      <section className="section-btns-filter-done-recipes">
+        <button
+          data-testid="filter-by-all-btn"
+          type="button"
+          onClick={ () => setBtnPressed('all') }
+        >
+          All
+        </button>
+        <button
+          data-testid="filter-by-food-btn"
+          type="button"
+          onClick={ () => setBtnPressed('food') }
+        >
+          Food
+        </button>
+        <button
+          data-testid="filter-by-drink-btn"
+          type="button"
+          onClick={ () => setBtnPressed('drink') }
+        >
+          Drinks
+        </button>
+      </section>
+      <ul className="ul-cards-done-recipes">
         { showCards() }
       </ul>
-    </div>
+    </section>
   );
 }
 
