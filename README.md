@@ -79,15 +79,16 @@ https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
 ## ANTES DE INICIALIZAR A APLICAÇÃO:
 
 1. Clone o repositório
-  * `git clone git@github.com:tryber/sd-017-project-recipes-app.git`
+  * `git clone git@github.com:THIAGOMARTINS367/Trybe-project-recipes-app.git`
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-017-project-recipes-app`
+    * `cd Trybe-project-recipes-app`
 
 2. Instale as dependências e inicialize o projeto
   * Instale as dependências:
     * `npm install`
   * Inicialize o projeto:
     * `npm start` (uma página de Login deve abrir no seu navegador)
+    * ⚠️ Lembrando que já deve se estar dentro da pasta do projeto `Trybe-project-recipes-app` ⚠️
 ---
 
 ## Linter
