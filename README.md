@@ -4,28 +4,29 @@ Este projeto foi desenvolvido durante o período de Curso da Trybe 🚀
 
 O projeto tem por objetivo a avaliação e prática dos conhecimentos adquiridos na Trybe, visando o cumprimento do requisitos solicitados pela mesma.
 
-### *ATENÇÃO: Para ver a aplicação funcionando acesse o link no canto direito em "About"*.
+### *ATENÇÃO: Para utilizar a aplicação acesse o link no canto direito em "About"*.
 
 ---
 
 # Sumário
-
+- [Descrição](#descrição)
 - [Habilidades](#habilidades-requeridas)
-
-  - [O que foi desenvolvido](#o-que-foi-desenvolvido)
-    - [Protótipo do projeto](#protótipo-do-projeto)
-
+- [O que foi desenvolvido](#o-que-foi-desenvolvido)
+- [Tecnologias usadas](#tecnologias-usadas)
+- [Protótipo do projeto](#protótipo-do-projeto)
 - [ANTES DE INICIALIZAR A APLICAÇÃO](#antes-de-inicializar-a-aplicação)
-
 - [Linter](#linter)
 - [APIs](#apis)
   - [TheMealDB API](#themealdb-api)
   - [The CockTailDB API](#the-cocktaildb-api)
+
 - [Usando o Trello como ferramenta kanban](#usando-o-trello-como-ferramenta-kanban)
 
 - [Observações técnicas](#observações-técnicas)
   - [Rotas](#rotas)
   - [Biblioteca clipboard-copy](#biblioteca-clipboard-copy)
+
+- [Desmontração de Uso](#desmontração-de-uso)
 
 ---
 
@@ -53,9 +54,17 @@ Além disso, o layout tem como foco dispositivos móveis, em função disso, foi
 
 ⚠️ Logo, recomenda-se visualizar o projeto usando a mesma resolução, via instalação [deste plugin](https://chrome.google.com/webstore/detail/window-resizer/kkelicaakdanhinjdeammmilcgefonfh?hl=en) do `Chrome`. ⚠️
 
-### Protótipo do projeto
+---
 
-No desenvolvimento também foi usado a ferramenta "Figma" par analisar mais detalhadamente as "views" da apliacação;
+## Tecnologias usadas
+
+- `javascript`, `jsx`, `React`, `Redux` e `css`.
+
+---
+
+## Protótipo do projeto
+
+No desenvolvimento também foi usado a ferramenta "Figma" para analisar mais detalhadamente as "views" da apliacação;
 
 Você pode acessar o protótipo usado como base no link abaixo:
 
@@ -73,16 +82,15 @@ https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
   * `git clone git@github.com:tryber/sd-017-project-recipes-app.git`
   * Entre na pasta do repositório que você acabou de clonar:
     * `cd sd-017-project-recipes-app`
-  * Vá para a branch do seu grupo, com `git checkout main-group-XX && git pull`, onde `XX` é o número do seu grupo. Exemplos: `main-group-1`, `main-group-22`.
 
 2. Instale as dependências e inicialize o projeto
   * Instale as dependências:
     * `npm install`
   * Inicialize o projeto:
-    * `npm start` (uma nova página deve abrir no seu navegador com um texto simples)
+    * `npm start` (uma página de Login deve abrir no seu navegador)
 ---
 
-### Linter
+## Linter
 
 Para garantir a qualidade do código de forma a tê-lo mais legível, de mais fácil manutenção e seguindo as boas práticas de desenvolvimento foi utilizado neste projeto o linter `ESLint`. Para rodar o linter localmente no seu projeto, execute o comando abaixo:
 
@@ -91,9 +99,9 @@ npm run lint
 ```
 ---
 
-### Usando o Trello como ferramenta kanban
+## Usando o Trello como ferramenta kanban
 
-Na organização das tarefas foi utilizado o modelo kanban para garantir que todos tivessem suas tarefas bem definidas e que a qualidade e a organização do projeto como um todo se mantivesse. Além de fazer com que o proceso de desenvolvimento fosse mais ágil e acertivo.
+Na organização das tarefas foi utilizado o modelo kanban, através da ferramenta "Trello", para garantir que todos tivessem suas tarefas bem definidas e que a qualidade e a organização do projeto como um todo se mantivesse. Além de fazer com que o proceso de desenvolvimento fosse mais ágil e acertivo.
 
 ---
 
@@ -302,3 +310,10 @@ Para mais informações, consulte a [documentação](https://www.npmjs.com/packa
 ---
 
 ***Obs: A maneira como as APIs devem ser estruturadas segue os seguintes modelos: https://www.themealdb.com/api.php e https://www.thecocktaildb.com/api.php***
+
+---
+
+## Desmontração de Uso
+
+### *Em produção*...
+
