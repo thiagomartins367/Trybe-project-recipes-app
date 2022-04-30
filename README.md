@@ -58,7 +58,7 @@ Além disso, o layout tem como foco dispositivos móveis, em função disso, foi
 
 ## Tecnologias usadas
 
-- `javascript`, `jsx`, `React`, `Redux` e `css`.
+- `javascript`, `css`, `jsx`, `React`, `ContextAPI` e `Jest`.
 
 ---
 
