@@ -25,7 +25,7 @@
     "react-scripts": "5.0.0",
     "websocket-extensions": ">=0.1.4"
   },
-  "homepage": "https:\/\/THIAGOMARTINS367.github.io/recipe-app",
+  "homepage": "https://thiagomartins367.github.io/Trybe-project-recipes-app/",
   "scripts": {
     "cy": "cypress run",
     "cy:open": "cypress open",
