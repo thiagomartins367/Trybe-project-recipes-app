@@ -108,6 +108,34 @@
   width: 50px;
 }
 
+.start-recipe-button,
+.continue-recipe-button,
+.finish-recipe-button {
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  font-size: 12pt;
+  background-color: rgb(255, 64, 64);
+}
+
+.finish-recipe-button:disabled {
+  background-color: rgb(161, 161, 161);
+}
+
+.start-recipe-button {
+  left: 20.3vh;
+}
+
+.continue-recipe-button {
+  left: 18.2vh;
+}
+
+.finish-recipe-button {
+  left: 20.3vh;
+}
+
 .section-form-login {
   align-items: center;
   background-image: url('https://media.istockphoto.com/photos/cookbook-with-vegetables-spices-and-herbs-shot-from-above-on-rustic-picture-id1125612329?k=20&m=1125612329&s=612x612&w=0&h=Y8wMGxEgJQb_KzeVEMlWwOewvwi0FJCuvoQNQ3EnaOA=');
