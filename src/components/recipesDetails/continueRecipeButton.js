@@ -17,6 +17,7 @@ function ContinueRecipeButton({ recipe, recipeType }) {
     <button
       type="button"
       data-testid="start-recipe-btn"
+      className="continue-recipe-button"
       style={ { position: 'fixed', bottom: 0 } }
       onClick={ () => redirectRecipeProgress() }
     >
