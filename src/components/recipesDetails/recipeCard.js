@@ -2,9 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 
-function RecipeCard({ title, image, category, testid }) {
+function RecipeCard({ title, image, category, testid, classCards }) {
   return (
-    <Card border="dark" data-testid={ testid } className="recipe-cards">
+    <Card border="dark" data-testid={ testid } className={ `recipe-cards ${classCards}` }>
       <Card.Img
         variant="top"
         src={ image }
