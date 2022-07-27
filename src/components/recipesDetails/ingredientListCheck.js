@@ -38,7 +38,6 @@ const verifyCheckedItem = (ingredient, ingredients, setIngredients, setFinishRec
   });
   const verifyFinish = ingredients.some((item) => item.checked !== true);
   if (!verifyFinish) {
-    // console.log('finish');
     setFinishRecipe(false);
   }
   setIngredients(verifyChecked);
