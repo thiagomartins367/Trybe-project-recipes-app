@@ -6,7 +6,7 @@ function IngredientList({ recipe }) {
   const arrIngredient = IngredientOrganization(recipe);
 
   return (
-    <section>
+    <section className="section-ingredients">
       <h4>Ingredientes</h4>
       <ul>
         {arrIngredient.map((item, index) => (
