@@ -9,30 +9,38 @@ import IngredientListCheck from './ingredientListCheck';
 function RecipeDetails({ recipe, page, recipeType }) {
   return (
     <section>
-      <RecipeCard
-        title={ recipe.strMeal || recipe.strDrink }
-        image={ recipe.strMealThumb || recipe.strDrinkThumb }
-        category={ recipe.strAlcoholic || recipe.strCategory }
-      />
-      <FavoriteButton recipe={ recipe } />
-      <ShareButton />
+      <div className="main-recipe-card">
+        <RecipeCard
+          title={ recipe.strMeal || recipe.strDrink }
+          image={ recipe.strMealThumb || recipe.strDrinkThumb }
+          category={ recipe.strAlcoholic || recipe.strCategory }
+        />
+      </div>
+      <section className="section-buttons-share-favorite">
+        <FavoriteButton recipe={ recipe } />
+        <ShareButton />
+      </section>
       {page === 'details'
         ? <IngredientList recipe={ recipe } />
         : <IngredientListCheck recipe={ recipe } recipeType={ recipeType } />}
-      <h4>
-        Instruções
-      </h4>
-      <p data-testid="instructions">
-        {recipe.strInstructions}
-      </p>
+      <section className="section-instructions">
+        <h4>
+          Instructions
+        </h4>
+        <p data-testid="instructions">
+          {recipe.strInstructions}
+        </p>
+      </section>
       {recipe.strYoutube && (
-        <iframe
-          data-testid="video"
-          title={ recipe.strMeal }
-          width="420"
-          height="315"
-          src={ recipe.strYoutube.replace('watch?v=', 'embed/') }
-        />
+        <div className="div-video">
+          <iframe
+            data-testid="video"
+            width="100%"
+            height="425"
+            title={ recipe.strMeal }
+            src={ recipe.strYoutube.replace('watch?v=', 'embed/') }
+          />
+        </div>
       )}
     </section>
   );
