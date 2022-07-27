@@ -42,6 +42,7 @@ function RecipeDetails({ recipe, page, recipeType }) {
           />
         </div>
       )}
+      { page === 'progress' && <div style={ { height: '60px' } } /> }
     </section>
   );
 }
