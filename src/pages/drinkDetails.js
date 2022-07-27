@@ -36,6 +36,8 @@ function DrinkDetails({ match, pageName }) {
         setStateContext={ setAllDrinkRecipes }
       />
       <br />
+      <br />
+      <br />
       {drinks && StartContinueFinishButton(drinks, recipeType, pageName)}
     </div>
   );
