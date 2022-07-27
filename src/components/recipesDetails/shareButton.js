@@ -31,15 +31,17 @@ function ShareButton() {
   };
 
   return (
-    <div>
-      {linkCopied && <span>Link copied!</span>}
+    <div className="div-share-button">
       <button
         type="button"
         data-testid="share-btn"
+        className="share-button"
         onClick={ () => shareRecipe() }
       >
-        <img src={ shareIcon } alt="Botão de Compartilhar" />
+        <img src={ shareIcon } alt="Botão de Compartilhar" className="share-button-img" />
       </button>
+      <br />
+      {linkCopied && <span>Link copied!</span>}
     </div>
   );
 }
