@@ -11,10 +11,6 @@ const verifyProgress = (recipe, recipeType) => {
       cocktails: {},
     };
   }
-  // console.log('returnStorage.cocktails: ', returnStorage.cocktails);
-  // console.log('returnStorage: ', returnStorage);
-  // console.log('recipeType: ', recipeType);
-  // console.log('recipe: ', recipe);
   if (returnStorage.meals === undefined) {
     returnStorage.meals = {};
   } else if (returnStorage.cocktails === undefined) {
@@ -43,7 +39,6 @@ const verifyProgress = (recipe, recipeType) => {
 };
 
 const StartContinueFinishButton = (recipe, recipeType, pageName) => {
-  // console.log('pageName: ', pageName);
   if (pageName === 'details') {
     return verifyProgress(recipe, recipeType);
   }
