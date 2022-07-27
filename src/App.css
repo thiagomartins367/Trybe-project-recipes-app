@@ -6,13 +6,107 @@
   height: 100vh;
 } */
 
-/* .carousel {
+.div-video {
+  padding: 15px;
+}
+
+.carousel {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  overflow-x: hidden;
-  width: 50%;
- } */
+  gap: 10px;
+  justify-content: center;
+
+  /* margin: 100px; */
+
+  /* overflow-x: hidden; */
+  padding: 1px;
+  width: 100%;
+}
+
+.div-recipe-details-main-image {
+  padding: 10px;
+
+  /* width: 100%; */
+}
+
+.section-ingredients {
+  border-radius: 10px;
+  box-shadow: 0.001px 5px 10px;
+  margin: 20px;
+  padding: 15px;
+}
+
+.section-ingredients h4 {
+  text-align: center;
+}
+
+.section-instructions {
+  padding: 15px;
+  text-align: justify;
+}
+
+.section-instructions h4 {
+  text-align: center;
+}
+
+.section-buttons-share-favorite {
+
+  /* background-color: rgb(101, 101, 243); */
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.div-share-button {
+  cursor: pointer;
+  display: inline-block;
+
+  /* width: 50px; */
+}
+
+.div-favorite-btn {
+  cursor: pointer;
+  display: inline-block;
+
+  /* width: 50px; */
+}
+
+.share-button {
+  background-color: white;
+  border: none;
+  outline: none;
+  padding: none;
+}
+
+.favorite-btn {
+  background-color: white;
+  border: none;
+  outline: none;
+  padding: none;
+}
+
+.share-button-img {
+
+  /* background-color: green; */
+  border: 1px solid black;
+  border-radius: 10px;
+
+  /* box-shadow: 0px 4px 10px; */
+  padding: 5px;
+  width: 50px;
+}
+
+.favorite-btn-img {
+  background-color: rgb(255, 64, 64);
+  border-radius: 10px;
+
+  /* box-shadow: 0px 5px 10px; */
+  padding: 5px;
+  width: 50px;
+}
 
 .section-form-login {
   align-items: center;
@@ -92,18 +186,31 @@
 
 .carouselGroup {
   display: flex;
+  height: 50%;
+  width: 100%;
 
   /* flex-wrap: wrap; */
-  overflow-x: hidden;
+
+  /* overflow-x: hidden; */
 }
 
 .checkedBox {
   text-decoration: line-through solid black;
 }
 
-.carouselGroup:nth-child( 1 ) {
+/* .carouselGroup:nth-child( 1 ) {
   flex: 1;
   width: 50%;
+} */
+
+.main-recipe-card {
+  padding: 15px;
+}
+
+.recomendation-card {
+  box-shadow: 0.001px 5px 10px;
+  height: 32vh;
+  margin: 5px;
 }
 
 .section-header {
@@ -148,7 +255,7 @@ header {
 .header-h1-page-title {
   font-family: Poppins , sans-serif;
   font-size: 18pt;
-  margin: 0.001px;
+  margin: none;
 }
 
 .header-section-search-bar {
@@ -179,7 +286,7 @@ header {
 }
 
 .header-radio-button {
-  border: 0.001px;
+  border: none;
   height: 1.3em;
 }
 
@@ -228,9 +335,10 @@ header {
 
 .recipe-cards {
   align-items: center;
+  border: 10px;
   display: flex;
-  justify-content: space-evenly;
-  width: 50%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .recipe-card {
@@ -248,7 +356,7 @@ header {
   background-color: white;
   border: none;
   border-radius: 10px;
-  padding: 0.001px;
+  padding: none;
   text-align: center;
   width: 170px;
 }
