@@ -40,20 +40,6 @@ export default function Header({ titleName, searchIconOnScreen }) {
   const history = useHistory();
   const { location: { pathname } } = history;
   const pathName = `${pathname.replace('/', '')}/`;
-  let string = '';
-  let pathnameFormatted = '';
-  for (let index = 0; index < pathName.length; index += 1) {
-    if (pathName[index] === '/') {
-      string = `${string[0].toUpperCase()}${
-        string.slice(1)
-      }`;
-      pathnameFormatted += `${string} `;
-      string = '';
-    } else {
-      string += pathName[index];
-    }
-  }
-  console.log(pathnameFormatted);
   const onChangSearch = ({ target: { value } }) => setSearch(value);
   const onChangeRadio = ({ target: { value } }) => {
     setRadio(value);
