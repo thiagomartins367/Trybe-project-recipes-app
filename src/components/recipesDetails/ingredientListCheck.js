@@ -70,7 +70,7 @@ function IngredientListCheck({ recipe, recipeType }) {
   };
 
   return (
-    <section>
+    <section className="section-ingredients">
       <h4>Ingredientes</h4>
       <ul>
         {ingredients && ingredients.map((item, index) => (
@@ -81,7 +81,7 @@ function IngredientListCheck({ recipe, recipeType }) {
           >
             <label
               htmlFor={ index }
-              className={ item.checked ? 'checkedBox' : '' }
+              className={ item.checked ? 'checkedBox' : 'empty-checkbox' }
             >
               <input
                 type="checkbox"
