@@ -5,6 +5,7 @@ import StartContinueFinishButton from
 '../components/recipesDetails/startContinueFinishButton';
 import Context from '../context/Context';
 import fetchRecipesAPI from '../services/fetchRecipesAPI';
+import BackButton from '../components/recipesDetails/backButton';
 
 function RecipeInProgress({ match, recipeType, pageName }) {
   const { idRecipe } = match.params;
@@ -38,7 +39,13 @@ function RecipeInProgress({ match, recipeType, pageName }) {
           recipeType={ recipeType }
         />
       )) }
-      {recipeProgress && StartContinueFinishButton(recipeProgress, recipeType, pageName)}
+      <section>
+        <BackButton destinationRoute={ `/${recipeType}s` } />
+        {
+          recipeProgress
+          && StartContinueFinishButton(recipeProgress, recipeType, pageName)
+        }
+      </section>
     </section>
   );
 }
