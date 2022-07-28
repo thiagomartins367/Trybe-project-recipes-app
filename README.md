@@ -44,7 +44,7 @@ O projeto tem por objetivo a avaliação e prática dos conhecimentos adquiridos
 
 ## O que foi desenvolvido
 
-Foi implementado, em grupo, um app de receitas, utilizando o que há de mais moderno dentro do ecossistema React: Hooks e Context API!
+Foi implementado, em equipe, um app de receitas, utilizando o que há de mais moderno dentro do ecossistema React: Hooks e Context API!
 
 Nessa aplicação de receitas é possível ver, buscar, filtrar, favoritar e acompanhar o progresso de preparação de receitas e drinks!
 
