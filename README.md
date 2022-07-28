@@ -66,9 +66,9 @@ Além disso, o layout tem como foco dispositivos móveis, em função disso, foi
 
 No desenvolvimento também foi usado a ferramenta "Figma" para analisar mais detalhadamente as "views" da apliacação;
 
-Você pode acessar o protótipo usado como base no link abaixo:
+O protótipo foi usado como base para o desenvolvimento do projeto.
 
-https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
+[Acesse o Protótipo](https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App)
 
 #### ⚠️ Para ver os comentários sobre cada componente, basta clicar no ícone de comentários no Figma (lado esquerdo superior).
 
