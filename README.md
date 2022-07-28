@@ -48,7 +48,7 @@ Foi implementado, em equipe, um app de receitas, utilizando o que há de mais mo
 
 Nessa aplicação de receitas é possível ver, buscar, filtrar, favoritar e acompanhar o progresso de preparação de receitas e drinks!
 
-A base de dados seão 2 APIs distintas, uma para comidas e outra para bebidas.
+A base de dados são 2 APIs distintas, uma para comidas e outra para bebidas.
 
 Além disso, o layout tem como foco dispositivos móveis, em função disso, foi usado o conceito de "Mobile First" no desenvolvimento sendo utilizada a resolução de tela de `360 x 640` (360 pixels de largura por 640 pixels de altura).
 
@@ -93,7 +93,7 @@ https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
 
 ## Linter
 
-Para garantir a qualidade do código de forma a tê-lo mais legível, de mais fácil manutenção e seguindo as boas práticas de desenvolvimento foi utilizado neste projeto o linter `ESLint`. Para rodar o linter localmente no seu projeto, execute o comando abaixo:
+Para garantir a qualidade do código de forma a tê-lo mais legível, de mais fácil manutenção e seguindo as boas práticas de desenvolvimento foi utilizado neste projeto o linter `ESLint`. Para rodar o linter localmente execute o comando abaixo:
 
 ```bash
 npm run lint
@@ -304,7 +304,7 @@ As rotas utilizadas na aplicação são as seguintes:
 
 ### Biblioteca `clipboard-copy`
 
-Para os componentes que contêm a funcionalidade de favoritar pratos ou bebidas, foi necessário utilizar a biblioteca `clipboard-copy` para copiar as informações da receita. Essa biblioteca já vem instalada no projeto.
+Para os componentes que contêm a funcionalidade de favoritar pratos ou bebidas, foi necessário utilizar a biblioteca `clipboard-copy` para copiar as informações da receita.
 
 Para mais informações, consulte a [documentação](https://www.npmjs.com/package/clipboard-copy)
 
