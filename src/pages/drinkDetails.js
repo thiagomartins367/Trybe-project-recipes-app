@@ -6,6 +6,7 @@ import fetchRecipesAPI from '../services/fetchRecipesAPI';
 import RecomentationRecipe from '../components/recipesDetails/recomendationRecipe';
 import StartContinueFinishButton from
 '../components/recipesDetails/startContinueFinishButton';
+import BackButton from '../components/recipesDetails/backButton';
 
 function DrinkDetails({ match, pageName }) {
   const { idRecipe } = match.params;
@@ -38,7 +39,10 @@ function DrinkDetails({ match, pageName }) {
       <br />
       <br />
       <br />
-      {drinks && StartContinueFinishButton(drinks, recipeType, pageName)}
+      <section>
+        <BackButton destinationRoute="/drinks" />
+        {drinks && StartContinueFinishButton(drinks, recipeType, pageName)}
+      </section>
     </div>
   );
 }
