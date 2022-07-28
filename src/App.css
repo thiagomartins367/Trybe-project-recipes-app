@@ -108,32 +108,45 @@
   width: 50px;
 }
 
-.start-recipe-button,
-.continue-recipe-button,
-.finish-recipe-button {
-  margin-bottom: 15px;
+.start-recipe-button, .continue-recipe-button, .finish-recipe-button {
+  background-color: rgb(255, 64, 64);
   border: none;
   border-radius: 10px;
-  padding: 5px;
   color: white;
   font-size: 12pt;
-  background-color: rgb(255, 64, 64);
+  margin-bottom: 15px;
+  padding: 6px;
+}
+
+.start-recipe-button {
+  left: 30vh;
+}
+
+.continue-recipe-button {
+  left: 27vh;
+}
+
+.finish-recipe-button {
+  left: 30vh;
 }
 
 .finish-recipe-button:disabled {
   background-color: rgb(161, 161, 161);
 }
 
-.start-recipe-button {
-  left: 20.3vh;
+.div-img-return-arrow {
+  background-color: orange;
 }
 
-.continue-recipe-button {
-  left: 18.2vh;
-}
-
-.finish-recipe-button {
-  left: 20.3vh;
+.div-img-return-arrow img {
+  background-color: gray;
+  border: none;
+  border-radius: 10px;
+  font-size: 12pt;
+  left: 13vh;
+  margin-bottom: 15px;
+  padding: 5px;
+  width: 36px;
 }
 
 .section-form-login {
@@ -222,8 +235,13 @@
   /* overflow-x: hidden; */
 }
 
-.checkedBox {
+.checkedBox input {
+  margin-right: 5px;
   text-decoration: line-through solid black;
+}
+
+.empty-checkbox input {
+  margin-right: 5px;
 }
 
 /* .carouselGroup:nth-child( 1 ) {
