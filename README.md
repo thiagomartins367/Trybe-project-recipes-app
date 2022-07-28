@@ -310,11 +310,6 @@ Para mais informações, consulte a [documentação](https://www.npmjs.com/packa
 
 ---
 
-***Obs: A maneira como as APIs devem ser estruturadas segue os seguintes modelos: https://www.themealdb.com/api.php e https://www.thecocktaildb.com/api.php***
-
----
-
 ## Desmontração de Uso
 
 ### *Em produção*...
-
