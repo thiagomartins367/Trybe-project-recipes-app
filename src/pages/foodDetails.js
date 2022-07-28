@@ -6,6 +6,7 @@ import fetchRecipesAPI from '../services/fetchRecipesAPI';
 import RecomentationRecipe from '../components/recipesDetails/recomendationRecipe';
 import StartContinueFinishButton from
 '../components/recipesDetails/startContinueFinishButton';
+import BackButton from '../components/recipesDetails/backButton';
 
 function FoodDetails({ match, pageName }) {
   const { idRecipe } = match.params;
@@ -26,7 +27,7 @@ function FoodDetails({ match, pageName }) {
   const recipeType = 'food';
 
   return (
-    <div>
+    <section>
       {meals && meals.map((food) => (
         <RecipeDetails key={ food.idMeal } recipe={ food } page={ pageName } />
       )) }
@@ -38,8 +39,11 @@ function FoodDetails({ match, pageName }) {
       <br />
       <br />
       <br />
-      {meals && StartContinueFinishButton(meals, recipeType, pageName)}
-    </div>
+      <section>
+        <BackButton destinationRoute="/foods" />
+        {meals && StartContinueFinishButton(meals, recipeType, pageName)}
+      </section>
+    </section>
   );
 }
 
