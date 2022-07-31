@@ -312,4 +312,4 @@ Para mais informações, consulte a [documentação](https://www.npmjs.com/packa
 
 ## Desmontração de Uso
 
-### *Em produção*...
+[Aqui](https://www.linkedin.com/posts/thiago-martins-bb8b7b221_css-desenvolvimentoweb-devs-activity-6959607508952862720-vHIY?utm_source=linkedin_share&utm_medium=member_desktop_web) é possível ver uma pequena demonstração da Aplicação.
