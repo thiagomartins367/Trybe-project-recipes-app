@@ -4,7 +4,7 @@ Este projeto foi desenvolvido durante o período de Curso da Trybe 🚀
 
 O projeto tem por objetivo a avaliação e prática dos conhecimentos adquiridos na Trybe, visando o cumprimento do requisitos solicitados pela mesma.
 
-### *ATENÇÃO: Para utilizar a aplicação acesse o link no canto direito em "About"*.
+### *ATENÇÃO: Para utilizar a aplicação acesse o link em "About"*.
 
 ---
 
@@ -12,7 +12,8 @@ O projeto tem por objetivo a avaliação e prática dos conhecimentos adquiridos
 - [Descrição](#descrição)
 - [Habilidades](#habilidades-requeridas)
 - [O que foi desenvolvido](#o-que-foi-desenvolvido)
-- [Tecnologias usadas](#tecnologias-usadas)
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
+- [Demonstração da aplicação](#demonstração-da-aplicação)
 - [Protótipo do projeto](#protótipo-do-projeto)
 - [ANTES DE INICIALIZAR A APLICAÇÃO](#antes-de-inicializar-a-aplicação)
 - [Linter](#linter)
@@ -25,8 +26,6 @@ O projeto tem por objetivo a avaliação e prática dos conhecimentos adquiridos
 - [Observações técnicas](#observações-técnicas)
   - [Rotas](#rotas)
   - [Biblioteca clipboard-copy](#biblioteca-clipboard-copy)
-
-- [Desmontração de Uso](#desmontração-de-uso)
 
 ---
 
@@ -56,9 +55,15 @@ Além disso, o layout tem como foco dispositivos móveis, em função disso, foi
 
 ---
 
-## Tecnologias usadas
+## Tecnologias utilizadas
 
 - `javascript` , `css` , `jsx` , `React` , `ContextAPI` e `Jest`.
+
+---
+
+## Demonstração da aplicação
+
+[Aqui](https://www.linkedin.com/posts/thiago-dioria-martins_css-desenvolvimentoweb-devs-activity-6959607508952862720-MVsP?utm_source=share&utm_medium=member_desktop) é possível ver uma pequena demonstração da Aplicação.
 
 ---
 
@@ -307,9 +312,3 @@ As rotas utilizadas na aplicação são as seguintes:
 Para os componentes que contêm a funcionalidade de favoritar pratos ou bebidas, foi necessário utilizar a biblioteca `clipboard-copy` para copiar as informações da receita.
 
 Para mais informações, consulte a [documentação](https://www.npmjs.com/package/clipboard-copy)
-
----
-
-## Desmontração de Uso
-
-[Aqui](https://www.linkedin.com/posts/thiago-dioria-martins_css-desenvolvimentoweb-devs-activity-6959607508952862720-MVsP?utm_source=share&utm_medium=member_desktop) é possível ver uma pequena demonstração da Aplicação.
