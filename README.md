@@ -4,7 +4,7 @@ Este projeto foi desenvolvido durante o período de Curso da Trybe 🚀
 
 O projeto tem por objetivo a avaliação e prática dos conhecimentos adquiridos na Trybe, visando o cumprimento do requisitos solicitados.
 
-:warning: Projeto desenvolvido em um squad de 5 integrantes.
+:warning: Projeto desenvolvido em equipe de 5 integrantes.
 
 ### :star: [Acesse](https://thiagomartins367.github.io/Trybe-project-recipes-app) a aplicação agora mesmo
 
